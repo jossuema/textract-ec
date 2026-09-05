@@ -1,0 +1,1287 @@
+{
+ "documento": "formulario_inscripcion",
+ "archivo": "docs/formulario_inscripcion.png",
+ "ancho": 2480,
+ "alto": 3508,
+ "dpi": 300,
+ "rotacion_grados": 0.0,
+ "nota": "Geometría en píxeles [x0, y0, x1, y1]; bbox de cada palabra calculado con font.getlength/getbbox al dibujar.",
+ "elementos": [
+  {
+   "id": "e1",
+   "rol": "titulo",
+   "texto": "Inscripción · AWS Community Day Ecuador 2026",
+   "bbox": [
+    535,
+    197,
+    1945,
+    250
+   ],
+   "palabras": [
+    {
+     "texto": "Inscripción",
+     "bbox": [
+      535,
+      197,
+      856,
+      250
+     ]
+    },
+    {
+     "texto": "·",
+     "bbox": [
+      874,
+      216,
+      894,
+      239
+     ]
+    },
+    {
+     "texto": "AWS",
+     "bbox": [
+      912,
+      200,
+      1046,
+      240
+     ]
+    },
+    {
+     "texto": "Community",
+     "bbox": [
+      1064,
+      199,
+      1397,
+      250
+     ]
+    },
+    {
+     "texto": "Day",
+     "bbox": [
+      1415,
+      201,
+      1527,
+      250
+     ]
+    },
+    {
+     "texto": "Ecuador",
+     "bbox": [
+      1545,
+      199,
+      1783,
+      240
+     ]
+    },
+    {
+     "texto": "2026",
+     "bbox": [
+      1801,
+      200,
+      1945,
+      240
+     ]
+    }
+   ],
+   "linea": "e1"
+  },
+  {
+   "id": "e2",
+   "rol": "linea",
+   "texto": "Universidad Politécnica Salesiana · Cuenca · 5 de septiembre de 2026",
+   "bbox": [
+    715,
+    294,
+    1765,
+    324
+   ],
+   "palabras": [
+    {
+     "texto": "Universidad",
+     "bbox": [
+      715,
+      295,
+      892,
+      318
+     ]
+    },
+    {
+     "texto": "Politécnica",
+     "bbox": [
+      902,
+      294,
+      1063,
+      318
+     ]
+    },
+    {
+     "texto": "Salesiana",
+     "bbox": [
+      1073,
+      295,
+      1215,
+      318
+     ]
+    },
+    {
+     "texto": "·",
+     "bbox": [
+      1225,
+      306,
+      1235,
+      318
+     ]
+    },
+    {
+     "texto": "Cuenca",
+     "bbox": [
+      1245,
+      296,
+      1357,
+      318
+     ]
+    },
+    {
+     "texto": "·",
+     "bbox": [
+      1367,
+      306,
+      1377,
+      318
+     ]
+    },
+    {
+     "texto": "5",
+     "bbox": [
+      1387,
+      296,
+      1406,
+      318
+     ]
+    },
+    {
+     "texto": "de",
+     "bbox": [
+      1416,
+      295,
+      1453,
+      318
+     ]
+    },
+    {
+     "texto": "septiembre",
+     "bbox": [
+      1463,
+      295,
+      1632,
+      324
+     ]
+    },
+    {
+     "texto": "de",
+     "bbox": [
+      1642,
+      295,
+      1679,
+      318
+     ]
+    },
+    {
+     "texto": "2026",
+     "bbox": [
+      1689,
+      296,
+      1765,
+      318
+     ]
+    }
+   ],
+   "linea": "e2"
+  },
+  {
+   "id": "e3",
+   "rol": "titulo",
+   "texto": "Datos del participante",
+   "bbox": [
+    200,
+    417,
+    652,
+    452
+   ],
+   "palabras": [
+    {
+     "texto": "Datos",
+     "bbox": [
+      200,
+      418,
+      317,
+      444
+     ]
+    },
+    {
+     "texto": "del",
+     "bbox": [
+      330,
+      417,
+      392,
+      444
+     ]
+    },
+    {
+     "texto": "participante",
+     "bbox": [
+      405,
+      417,
+      652,
+      452
+     ]
+    }
+   ],
+   "linea": "e3"
+  },
+  {
+   "id": "e6",
+   "rol": "clave",
+   "texto": "Nombre:",
+   "bbox": [
+    200,
+    507,
+    364,
+    536
+   ],
+   "palabras": [
+    {
+     "texto": "Nombre:",
+     "bbox": [
+      200,
+      507,
+      364,
+      536
+     ]
+    }
+   ],
+   "linea": "L5",
+   "par": "P4"
+  },
+  {
+   "id": "e7",
+   "rol": "valor",
+   "texto": "Ana Lucía",
+   "bbox": [
+    388,
+    506,
+    573,
+    536
+   ],
+   "palabras": [
+    {
+     "texto": "Ana",
+     "bbox": [
+      388,
+      508,
+      461,
+      536
+     ]
+    },
+    {
+     "texto": "Lucía",
+     "bbox": [
+      473,
+      506,
+      573,
+      536
+     ]
+    }
+   ],
+   "linea": "L5",
+   "par": "P4"
+  },
+  {
+   "id": "e10",
+   "rol": "clave",
+   "texto": "Apellido:",
+   "bbox": [
+    200,
+    612,
+    366,
+    649
+   ],
+   "palabras": [
+    {
+     "texto": "Apellido:",
+     "bbox": [
+      200,
+      612,
+      366,
+      649
+     ]
+    }
+   ],
+   "linea": "L9",
+   "par": "P8"
+  },
+  {
+   "id": "e11",
+   "rol": "valor",
+   "texto": "Sarmiento Vera",
+   "bbox": [
+    390,
+    612,
+    686,
+    641
+   ],
+   "palabras": [
+    {
+     "texto": "Sarmiento",
+     "bbox": [
+      390,
+      612,
+      586,
+      641
+     ]
+    },
+    {
+     "texto": "Vera",
+     "bbox": [
+      598,
+      613,
+      686,
+      641
+     ]
+    }
+   ],
+   "linea": "L9",
+   "par": "P8"
+  },
+  {
+   "id": "e14",
+   "rol": "clave",
+   "texto": "Cédula:",
+   "bbox": [
+    200,
+    716,
+    345,
+    746
+   ],
+   "palabras": [
+    {
+     "texto": "Cédula:",
+     "bbox": [
+      200,
+      716,
+      345,
+      746
+     ]
+    }
+   ],
+   "linea": "L13",
+   "par": "P12"
+  },
+  {
+   "id": "e15",
+   "rol": "valor",
+   "texto": "0103456786",
+   "bbox": [
+    369,
+    717,
+    609,
+    746
+   ],
+   "palabras": [
+    {
+     "texto": "0103456786",
+     "bbox": [
+      369,
+      717,
+      609,
+      746
+     ]
+    }
+   ],
+   "linea": "L13",
+   "par": "P12"
+  },
+  {
+   "id": "e18",
+   "rol": "clave",
+   "texto": "Correo:",
+   "bbox": [
+    200,
+    822,
+    341,
+    851
+   ],
+   "palabras": [
+    {
+     "texto": "Correo:",
+     "bbox": [
+      200,
+      822,
+      341,
+      851
+     ]
+    }
+   ],
+   "linea": "L17",
+   "par": "P16"
+  },
+  {
+   "id": "e19",
+   "rol": "valor",
+   "texto": "ana.sarmiento@ejemplo.ec",
+   "bbox": [
+    365,
+    822,
+    885,
+    859
+   ],
+   "palabras": [
+    {
+     "texto": "ana.sarmiento@ejemplo.ec",
+     "bbox": [
+      365,
+      822,
+      885,
+      859
+     ]
+    }
+   ],
+   "linea": "L17",
+   "par": "P16"
+  },
+  {
+   "id": "e22",
+   "rol": "clave",
+   "texto": "Ciudad:",
+   "bbox": [
+    200,
+    927,
+    346,
+    956
+   ],
+   "palabras": [
+    {
+     "texto": "Ciudad:",
+     "bbox": [
+      200,
+      927,
+      346,
+      956
+     ]
+    }
+   ],
+   "linea": "L21",
+   "par": "P20"
+  },
+  {
+   "id": "e23",
+   "rol": "valor",
+   "texto": "Cuenca",
+   "bbox": [
+    370,
+    927,
+    512,
+    956
+   ],
+   "palabras": [
+    {
+     "texto": "Cuenca",
+     "bbox": [
+      370,
+      927,
+      512,
+      956
+     ]
+    }
+   ],
+   "linea": "L21",
+   "par": "P20"
+  },
+  {
+   "id": "e26",
+   "rol": "clave",
+   "texto": "Empresa:",
+   "bbox": [
+    200,
+    1033,
+    380,
+    1069
+   ],
+   "palabras": [
+    {
+     "texto": "Empresa:",
+     "bbox": [
+      200,
+      1033,
+      380,
+      1069
+     ]
+    }
+   ],
+   "linea": "L25",
+   "par": "P24"
+  },
+  {
+   "id": "e27",
+   "rol": "valor",
+   "texto": "Andina Datos Ejemplo",
+   "bbox": [
+    404,
+    1032,
+    823,
+    1069
+   ],
+   "palabras": [
+    {
+     "texto": "Andina",
+     "bbox": [
+      404,
+      1032,
+      536,
+      1061
+     ]
+    },
+    {
+     "texto": "Datos",
+     "bbox": [
+      548,
+      1033,
+      658,
+      1061
+     ]
+    },
+    {
+     "texto": "Ejemplo",
+     "bbox": [
+      670,
+      1032,
+      823,
+      1069
+     ]
+    }
+   ],
+   "linea": "L25",
+   "par": "P24"
+  },
+  {
+   "id": "e30",
+   "rol": "clave",
+   "texto": "Teléfono:",
+   "bbox": [
+    199,
+    1136,
+    376,
+    1166
+   ],
+   "palabras": [
+    {
+     "texto": "Teléfono:",
+     "bbox": [
+      199,
+      1136,
+      376,
+      1166
+     ]
+    }
+   ],
+   "linea": "L29",
+   "par": "P28"
+  },
+  {
+   "id": "e31",
+   "rol": "valor",
+   "texto": "099 123 4567",
+   "bbox": [
+    400,
+    1137,
+    664,
+    1166
+   ],
+   "palabras": [
+    {
+     "texto": "099",
+     "bbox": [
+      400,
+      1137,
+      472,
+      1166
+     ]
+    },
+    {
+     "texto": "123",
+     "bbox": [
+      484,
+      1137,
+      556,
+      1166
+     ]
+    },
+    {
+     "texto": "4567",
+     "bbox": [
+      568,
+      1137,
+      664,
+      1166
+     ]
+    }
+   ],
+   "linea": "L29",
+   "par": "P28"
+  },
+  {
+   "id": "e32",
+   "rol": "titulo",
+   "texto": "Track (marcar con X):",
+   "bbox": [
+    200,
+    1282,
+    665,
+    1316
+   ],
+   "palabras": [
+    {
+     "texto": "Track",
+     "bbox": [
+      200,
+      1282,
+      320,
+      1311
+     ]
+    },
+    {
+     "texto": "(marcar",
+     "bbox": [
+      332,
+      1282,
+      502,
+      1316
+     ]
+    },
+    {
+     "texto": "con",
+     "bbox": [
+      515,
+      1289,
+      591,
+      1311
+     ]
+    },
+    {
+     "texto": "X):",
+     "bbox": [
+      604,
+      1282,
+      665,
+      1316
+     ]
+    }
+   ],
+   "linea": "e32"
+  },
+  {
+   "id": "e34",
+   "rol": "clave",
+   "texto": "Workshop OCR con Textract",
+   "bbox": [
+    311,
+    1365,
+    818,
+    1399
+   ],
+   "palabras": [
+    {
+     "texto": "Workshop",
+     "bbox": [
+      311,
+      1365,
+      492,
+      1399
+     ]
+    },
+    {
+     "texto": "OCR",
+     "bbox": [
+      503,
+      1366,
+      581,
+      1392
+     ]
+    },
+    {
+     "texto": "con",
+     "bbox": [
+      592,
+      1372,
+      657,
+      1392
+     ]
+    },
+    {
+     "texto": "Textract",
+     "bbox": [
+      667,
+      1366,
+      818,
+      1392
+     ]
+    }
+   ],
+   "linea": "e34",
+   "par": "P33",
+   "grupo": "Track (marcar con X):"
+  },
+  {
+   "id": "e35",
+   "rol": "checkbox",
+   "texto": "",
+   "bbox": [
+    240,
+    1355,
+    287,
+    1402
+   ],
+   "palabras": [],
+   "linea": null,
+   "estado": "SELECTED",
+   "par": "P33",
+   "etiqueta": "e34",
+   "grupo": "Track (marcar con X):"
+  },
+  {
+   "id": "e37",
+   "rol": "clave",
+   "texto": "Serverless",
+   "bbox": [
+    311,
+    1450,
+    499,
+    1477
+   ],
+   "palabras": [
+    {
+     "texto": "Serverless",
+     "bbox": [
+      311,
+      1450,
+      499,
+      1477
+     ]
+    }
+   ],
+   "linea": "e37",
+   "par": "P36",
+   "grupo": "Track (marcar con X):"
+  },
+  {
+   "id": "e38",
+   "rol": "checkbox",
+   "texto": "",
+   "bbox": [
+    240,
+    1440,
+    287,
+    1487
+   ],
+   "palabras": [],
+   "linea": null,
+   "estado": "NOT_SELECTED",
+   "par": "P36",
+   "etiqueta": "e37",
+   "grupo": "Track (marcar con X):"
+  },
+  {
+   "id": "e40",
+   "rol": "clave",
+   "texto": "Datos y analítica",
+   "bbox": [
+    311,
+    1533,
+    612,
+    1569
+   ],
+   "palabras": [
+    {
+     "texto": "Datos",
+     "bbox": [
+      311,
+      1536,
+      416,
+      1562
+     ]
+    },
+    {
+     "texto": "y",
+     "bbox": [
+      427,
+      1542,
+      448,
+      1569
+     ]
+    },
+    {
+     "texto": "analítica",
+     "bbox": [
+      459,
+      1533,
+      612,
+      1562
+     ]
+    }
+   ],
+   "linea": "e40",
+   "par": "P39",
+   "grupo": "Track (marcar con X):"
+  },
+  {
+   "id": "e41",
+   "rol": "checkbox",
+   "texto": "",
+   "bbox": [
+    240,
+    1525,
+    287,
+    1572
+   ],
+   "palabras": [],
+   "linea": null,
+   "estado": "NOT_SELECTED",
+   "par": "P39",
+   "etiqueta": "e40",
+   "grupo": "Track (marcar con X):"
+  },
+  {
+   "id": "e42",
+   "rol": "titulo",
+   "texto": "¿Tienes cuenta AWS?:",
+   "bbox": [
+    200,
+    1667,
+    671,
+    1696
+   ],
+   "palabras": [
+    {
+     "texto": "¿Tienes",
+     "bbox": [
+      200,
+      1667,
+      363,
+      1696
+     ]
+    },
+    {
+     "texto": "cuenta",
+     "bbox": [
+      376,
+      1669,
+      523,
+      1696
+     ]
+    },
+    {
+     "texto": "AWS?:",
+     "bbox": [
+      536,
+      1667,
+      671,
+      1696
+     ]
+    }
+   ],
+   "linea": "e42"
+  },
+  {
+   "id": "e44",
+   "rol": "clave",
+   "texto": "Sí",
+   "bbox": [
+    311,
+    1748,
+    345,
+    1777
+   ],
+   "palabras": [
+    {
+     "texto": "Sí",
+     "bbox": [
+      311,
+      1748,
+      345,
+      1777
+     ]
+    }
+   ],
+   "linea": "e44",
+   "par": "P43",
+   "grupo": "¿Tienes cuenta AWS?:"
+  },
+  {
+   "id": "e45",
+   "rol": "checkbox",
+   "texto": "",
+   "bbox": [
+    240,
+    1740,
+    287,
+    1787
+   ],
+   "palabras": [],
+   "linea": null,
+   "estado": "SELECTED",
+   "par": "P43",
+   "etiqueta": "e44",
+   "grupo": "¿Tienes cuenta AWS?:"
+  },
+  {
+   "id": "e47",
+   "rol": "clave",
+   "texto": "No",
+   "bbox": [
+    311,
+    1836,
+    360,
+    1862
+   ],
+   "palabras": [
+    {
+     "texto": "No",
+     "bbox": [
+      311,
+      1836,
+      360,
+      1862
+     ]
+    }
+   ],
+   "linea": "e47",
+   "par": "P46",
+   "grupo": "¿Tienes cuenta AWS?:"
+  },
+  {
+   "id": "e48",
+   "rol": "checkbox",
+   "texto": "",
+   "bbox": [
+    240,
+    1825,
+    287,
+    1872
+   ],
+   "palabras": [],
+   "linea": null,
+   "estado": "NOT_SELECTED",
+   "par": "P46",
+   "etiqueta": "e47",
+   "grupo": "¿Tienes cuenta AWS?:"
+  },
+  {
+   "id": "e49",
+   "rol": "titulo",
+   "texto": "Nivel:",
+   "bbox": [
+    200,
+    1967,
+    324,
+    1996
+   ],
+   "palabras": [
+    {
+     "texto": "Nivel:",
+     "bbox": [
+      200,
+      1967,
+      324,
+      1996
+     ]
+    }
+   ],
+   "linea": "e49"
+  },
+  {
+   "id": "e51",
+   "rol": "clave",
+   "texto": "Principiante",
+   "bbox": [
+    311,
+    2050,
+    525,
+    2084
+   ],
+   "palabras": [
+    {
+     "texto": "Principiante",
+     "bbox": [
+      311,
+      2050,
+      525,
+      2084
+     ]
+    }
+   ],
+   "linea": "e51",
+   "par": "P50",
+   "grupo": "Nivel:"
+  },
+  {
+   "id": "e52",
+   "rol": "checkbox",
+   "texto": "",
+   "bbox": [
+    240,
+    2040,
+    287,
+    2087
+   ],
+   "palabras": [],
+   "linea": null,
+   "estado": "NOT_SELECTED",
+   "par": "P50",
+   "etiqueta": "e51",
+   "grupo": "Nivel:"
+  },
+  {
+   "id": "e54",
+   "rol": "clave",
+   "texto": "Intermedio",
+   "bbox": [
+    311,
+    2135,
+    508,
+    2162
+   ],
+   "palabras": [
+    {
+     "texto": "Intermedio",
+     "bbox": [
+      311,
+      2135,
+      508,
+      2162
+     ]
+    }
+   ],
+   "linea": "e54",
+   "par": "P53",
+   "grupo": "Nivel:"
+  },
+  {
+   "id": "e55",
+   "rol": "checkbox",
+   "texto": "",
+   "bbox": [
+    240,
+    2125,
+    287,
+    2172
+   ],
+   "palabras": [],
+   "linea": null,
+   "estado": "SELECTED",
+   "par": "P53",
+   "etiqueta": "e54",
+   "grupo": "Nivel:"
+  },
+  {
+   "id": "e57",
+   "rol": "clave",
+   "texto": "Avanzado",
+   "bbox": [
+    311,
+    2220,
+    488,
+    2247
+   ],
+   "palabras": [
+    {
+     "texto": "Avanzado",
+     "bbox": [
+      311,
+      2220,
+      488,
+      2247
+     ]
+    }
+   ],
+   "linea": "e57",
+   "par": "P56",
+   "grupo": "Nivel:"
+  },
+  {
+   "id": "e58",
+   "rol": "checkbox",
+   "texto": "",
+   "bbox": [
+    240,
+    2210,
+    287,
+    2257
+   ],
+   "palabras": [],
+   "linea": null,
+   "estado": "NOT_SELECTED",
+   "par": "P56",
+   "etiqueta": "e57",
+   "grupo": "Nivel:"
+  },
+  {
+   "id": "e60",
+   "rol": "clave",
+   "texto": "Firma:",
+   "bbox": [
+    200,
+    2412,
+    322,
+    2441
+   ],
+   "palabras": [
+    {
+     "texto": "Firma:",
+     "bbox": [
+      200,
+      2412,
+      322,
+      2441
+     ]
+    }
+   ],
+   "linea": "e60",
+   "par": "P59"
+  },
+  {
+   "id": "e61",
+   "rol": "valor",
+   "texto": "",
+   "bbox": [
+    360,
+    2395,
+    1200,
+    2460
+   ],
+   "palabras": [],
+   "linea": null,
+   "par": "P59"
+  },
+  {
+   "id": "e62",
+   "rol": "linea",
+   "texto": "DOCUMENTO FICTICIO · SOLO PARA DEMOSTRACIÓN · AWS Community Day Ecuador 2026",
+   "bbox": [
+    654,
+    3369,
+    1826,
+    3398
+   ],
+   "palabras": [
+    {
+     "texto": "DOCUMENTO",
+     "bbox": [
+      654,
+      3374,
+      824,
+      3393
+     ]
+    },
+    {
+     "texto": "FICTICIO",
+     "bbox": [
+      832,
+      3374,
+      943,
+      3393
+     ]
+    },
+    {
+     "texto": "·",
+     "bbox": [
+      951,
+      3382,
+      959,
+      3393
+     ]
+    },
+    {
+     "texto": "SOLO",
+     "bbox": [
+      967,
+      3374,
+      1038,
+      3393
+     ]
+    },
+    {
+     "texto": "PARA",
+     "bbox": [
+      1046,
+      3374,
+      1116,
+      3393
+     ]
+    },
+    {
+     "texto": "DEMOSTRACIÓN",
+     "bbox": [
+      1124,
+      3369,
+      1336,
+      3393
+     ]
+    },
+    {
+     "texto": "·",
+     "bbox": [
+      1344,
+      3382,
+      1352,
+      3393
+     ]
+    },
+    {
+     "texto": "AWS",
+     "bbox": [
+      1360,
+      3374,
+      1421,
+      3393
+     ]
+    },
+    {
+     "texto": "Community",
+     "bbox": [
+      1429,
+      3373,
+      1577,
+      3398
+     ]
+    },
+    {
+     "texto": "Day",
+     "bbox": [
+      1585,
+      3374,
+      1636,
+      3398
+     ]
+    },
+    {
+     "texto": "Ecuador",
+     "bbox": [
+      1644,
+      3373,
+      1750,
+      3393
+     ]
+    },
+    {
+     "texto": "2026",
+     "bbox": [
+      1758,
+      3374,
+      1826,
+      3393
+     ]
+    }
+   ],
+   "linea": "e62"
+  }
+ ]
+}

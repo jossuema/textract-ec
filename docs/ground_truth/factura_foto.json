@@ -1,0 +1,104 @@
+{
+ "documento": "factura_foto",
+ "archivo": "docs/factura_foto.jpg",
+ "tipo_documento": "factura",
+ "emisor": {
+  "razon_social": "TECNOLOGÍA ANDINA EJEMPLO S.A.",
+  "ruc": "1790456129001",
+  "direccion": "Av. Amazonas N33-123 y Rumipamba, Quito",
+  "obligado_contabilidad": "SÍ"
+ },
+ "comprador": {
+  "nombre": "Comunidad AWS Ecuador Ejemplo",
+  "identificacion": "0103456786",
+  "direccion": "Calle Larga 4-56, Cuenca",
+  "correo": "hola@ejemplo.ec"
+ },
+ "numero_factura": "001-001-000001234",
+ "fecha_emision": "01/09/2026",
+ "fecha_emision_iso": "2026-09-01",
+ "numero_autorizacion": "0109202601179045612900120010010000012341234567813",
+ "clave_acceso": "0109202601179045612900120010010000012341234567813",
+ "fecha_autorizacion": "01/09/2026 09:15:00",
+ "ambiente": "PRODUCCIÓN",
+ "emision": "NORMAL",
+ "items": [
+  {
+   "cantidad": "2",
+   "descripcion": "Monitor 27\" 4K Ejemplo",
+   "precio_unitario": "350.00",
+   "descuento": "0.00",
+   "precio_total": "700.00"
+  },
+  {
+   "cantidad": "1",
+   "descripcion": "Teclado mecánico ES",
+   "precio_unitario": "85.60",
+   "descuento": "0.00",
+   "precio_total": "85.60"
+  },
+  {
+   "cantidad": "3",
+   "descripcion": "Cable HDMI 2.1 2m",
+   "precio_unitario": "12.00",
+   "descuento": "0.00",
+   "precio_total": "36.00"
+  }
+ ],
+ "totales": {
+  "SUBTOTAL 15%": "821.60",
+  "SUBTOTAL 0%": "0.00",
+  "SUBTOTAL NO OBJETO DE IVA": "0.00",
+  "SUBTOTAL EXENTO DE IVA": "0.00",
+  "SUBTOTAL SIN IMPUESTOS": "821.60",
+  "TOTAL DESCUENTO": "0.00",
+  "ICE": "0.00",
+  "IVA 15%": "123.24",
+  "PROPINA": "0.00",
+  "VALOR TOTAL": "944.84"
+ },
+ "forma_pago": {
+  "forma": "TARJETA DE CRÉDITO",
+  "valor": "944.84"
+ },
+ "moneda": "USD",
+ "campos_esperados": {
+  "RUC_EMISOR": "1790456129001",
+  "NUM_FACTURA": "001-001-000001234",
+  "CLAVE_ACCESO": "0109202601179045612900120010010000012341234567813",
+  "FECHA_EMISION": "01/09/2026",
+  "SUBTOTAL_15": "821.60",
+  "IVA_15": "123.24",
+  "VALOR_TOTAL": "944.84"
+ },
+ "estado_esperado": "OK",
+ "alertas_esperadas": [],
+ "confianza_real_textract": {
+  "LINE": 97.3,
+  "WORD": 96.2,
+  "palabras_bajo_90": 20,
+  "palabras": 173,
+  "queries": {
+   "RUC_EMISOR": 99.0,
+   "NUM_FACTURA": 97.0,
+   "CLAVE_ACCESO": 73.0,
+   "FECHA_EMISION": 98.0,
+   "SUBTOTAL_15": 96.0,
+   "IVA_15": 99.0,
+   "VALOR_TOTAL": 98.0
+  },
+  "comparacion_con_factura_limpia": "WORD baja de 98.7 a 96.2 (no a 78); el único campo que se degrada de verdad es CLAVE_ACCESO por QUERIES: 83.0 → 73.0, y ahí gana FORMS"
+ },
+ "derivado_de": "factura_limpia",
+ "degradacion": {
+  "resize": 0.33,
+  "ancho_final": 1260,
+  "rotacion_grados": 2.0,
+  "gaussian_blur": 0.8,
+  "ruido": "effect_noise sigma 18 mezclado al 10%",
+  "contraste": 0.85,
+  "brillo": "gradiente diagonal",
+  "jpeg_calidad": 62
+ },
+ "nota": "Los valores impresos son idénticos a factura_limpia. Con Textract real (fixtures del 2026-09-04) la foto degradada se lee perfecta: estado OK y 0 alertas. Ya NO se espera la corrección O→0 ni alertas de confianza baja: eran artefactos de los fixtures sintéticos. La lección es que Textract es robusto; el momento de las alertas del taller lo da factura_trampa, donde el OCR es perfecto y aun así el documento está mal. Si el ponente toma una foto NUEVA en el auditorio y sale peor, este ground truth deja de aplicar a esa foto (usa docs/ground_truth/factura_limpia.json para los valores y espera estado REVISAR)."
+}

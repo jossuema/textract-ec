@@ -1,0 +1,27 @@
+{
+  "origen": "textract",
+  "generado": "2026-09-04",
+  "generador": "tools/grabar_fixtures.py",
+  "nota": "Respuestas REALES de Amazon Textract grabadas desde la cuenta del ponente; misma forma que devuelve boto3 (minificadas). Regenerar con tools/grabar_fixtures.py.",
+  "region": "us-east-1",
+  "cuenta_ultimos4": "7259",
+  "perfil": "personal",
+  "modelo_textract": {
+    "DetectDocumentTextModelVersion": "1.0",
+    "AnalyzeDocumentModelVersion": "1.0"
+  },
+  "bedrock": {},
+  "documentos": [
+    "factura_foto",
+    "factura_limpia",
+    "factura_trampa",
+    "formulario_inscripcion",
+    "mini",
+    "orden_compra_prosa",
+    "recibo_restaurante"
+  ],
+  "fallos": [],
+  "no_regrabados": [],
+  "comprimidos": false,
+  "errores_inyectados": {}
+}

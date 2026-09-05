@@ -1,0 +1,15 @@
+# Respuestas reales grabadas por cada asistente y salidas de los labs
+cache/
+salida/
+# Entorno virtual y bytecode
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+# Credenciales y configuración local
+.env
+# Foto tomada en vivo durante el taller
+docs/factura_foto_vivo.jpg
+# Sistema
+.DS_Store

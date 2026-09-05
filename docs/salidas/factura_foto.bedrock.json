@@ -1,0 +1,65 @@
+{
+  "generado": "2026-09-04T19:09:26",
+  "documento": "docs/factura_foto.jpg",
+  "tipo_textract": "factura",
+  "modelo_id": "amazon.nova-lite-v1:0",
+  "estrategia": "tool_use",
+  "modo": "offline",
+  "fixture": "fixtures/bedrock/factura_foto__nova.json",
+  "sintetico": true,
+  "usage": {
+    "inputTokens": 1533,
+    "outputTokens": 388,
+    "totalTokens": 1921
+  },
+  "costo_usd_aprox": 0.000185,
+  "intentos_fallidos": [],
+  "json_llm": {
+    "tipo_documento": "factura",
+    "emisor": {
+      "razon_social": "TECNOLOGÍA ANDINA EJEMPLO S.A.",
+      "ruc": "1790456129001"
+    },
+    "comprador": {
+      "nombre": "Comunidad AWS Ecuador Ejemplo",
+      "identificacion": "0103456786"
+    },
+    "numero_factura": "001-001-000001234",
+    "fecha_emision": "2026-09-01",
+    "clave_acceso": "0109202601179045612900120010010000012341234567813",
+    "items": [
+      {
+        "descripcion": "Monitor 27\" 4K Ejemplo",
+        "cantidad": 2,
+        "precio_unitario": 350.0,
+        "total": 700.0
+      },
+      {
+        "descripcion": "Teclado mecánico ES",
+        "cantidad": 1,
+        "precio_unitario": 85.6,
+        "total": 85.6
+      },
+      {
+        "descripcion": "Cable HDMI 2.1 2m",
+        "cantidad": 3,
+        "precio_unitario": 12.0,
+        "total": 36.0
+      }
+    ],
+    "subtotal": 821.6,
+    "iva": 123.24,
+    "propina": 0.0,
+    "total": 944.84,
+    "moneda": "USD",
+    "alertas": [
+      "Clave de acceso: el OCR leyó una letra 'O' en la posición 25; se corrigió a '0' porque la clave del SRI solo admite dígitos y así el dígito verificador (módulo 11) cuadra.",
+      "VALOR TOTAL leído con confianza 71 %: se mantiene 944.84 porque coincide con SUBTOTAL 15% (821.60) + IVA 15% (123.24)."
+    ],
+    "explicacion": "Factura electrónica de Tecnología Andina Ejemplo S.A. (RUC 1790456129001) a Comunidad AWS Ecuador Ejemplo, No. 001-001-000001234 del 1 de septiembre de 2026, con tres ítems por 821.60 más IVA 15 % de 123.24; total 944.84 USD. La foto está inclinada y con poca luz, por eso hay confianzas bajas, pero la aritmética cuadra."
+  },
+  "revalidacion": {
+    "alertas": [],
+    "estado": "OK"
+  }
+}

@@ -1,0 +1,201 @@
+{
+  "documento": "docs/formulario_inscripcion.png",
+  "tipo_documento": "formulario",
+  "campos": {
+    "Ciudad": {
+      "valor": "Cuenca",
+      "confianza": 94.38628387451172,
+      "origen": "FORMS"
+    },
+    "Teléfono": {
+      "valor": "099 123 4567",
+      "confianza": 94.72232818603516,
+      "origen": "FORMS"
+    },
+    "Workshop OCR con Textract": {
+      "valor": "[X]",
+      "confianza": 94.74919128417969,
+      "origen": "FORMS"
+    },
+    "Sí": {
+      "valor": "[X]",
+      "confianza": 92.58036041259766,
+      "origen": "FORMS"
+    },
+    "Datos y analítica": {
+      "valor": "[ ]",
+      "confianza": 94.46275329589844,
+      "origen": "FORMS"
+    },
+    "Empresa": {
+      "valor": "Andina Datos Ejemplo",
+      "confianza": 94.97112274169922,
+      "origen": "FORMS"
+    },
+    "Cuenca": {
+      "valor": "2026",
+      "confianza": 80.0,
+      "origen": "FORMS"
+    },
+    "Avanzado": {
+      "valor": "[ ]",
+      "confianza": 92.86021423339844,
+      "origen": "FORMS"
+    },
+    "Cédula": {
+      "valor": "0103456786",
+      "confianza": 94.9398193359375,
+      "origen": "FORMS"
+    },
+    "Correo": {
+      "valor": "ana.sarmiento@ejemplo.ec",
+      "confianza": 95.09766387939453,
+      "origen": "FORMS"
+    },
+    "Serverless": {
+      "valor": "[ ]",
+      "confianza": 94.24180603027344,
+      "origen": "FORMS"
+    },
+    "Firma": {
+      "valor": "",
+      "confianza": 91.81571960449219,
+      "origen": "FORMS"
+    },
+    "Apellido": {
+      "valor": "Sarmiento Vera",
+      "confianza": 95.04801940917969,
+      "origen": "FORMS"
+    },
+    "Intermedio": {
+      "valor": "[X]",
+      "confianza": 93.3079605102539,
+      "origen": "FORMS"
+    },
+    "No": {
+      "valor": "[ ]",
+      "confianza": 91.47171020507812,
+      "origen": "FORMS"
+    },
+    "Nombre": {
+      "valor": "Ana Lucía",
+      "confianza": 93.95963287353516,
+      "origen": "FORMS"
+    },
+    "Principiante": {
+      "valor": "[ ]",
+      "confianza": 94.11442565917969,
+      "origen": "FORMS"
+    },
+    "5 de septiembre de": {
+      "valor": "",
+      "confianza": 48.20090103149414,
+      "origen": "FORMS"
+    },
+    "[Workshop OCR con Textract]": {
+      "valor": "[X]",
+      "confianza": 90.234375,
+      "origen": "FORMS"
+    },
+    "[Sí]": {
+      "valor": "[X]",
+      "confianza": 88.18359375,
+      "origen": "FORMS"
+    },
+    "[Datos y analítica]": {
+      "valor": "[ ]",
+      "confianza": 92.7734375,
+      "origen": "FORMS"
+    },
+    "[Avanzado]": {
+      "valor": "[ ]",
+      "confianza": 92.626953125,
+      "origen": "FORMS"
+    },
+    "[Serverless]": {
+      "valor": "[ ]",
+      "confianza": 91.6015625,
+      "origen": "FORMS"
+    },
+    "[Intermedio]": {
+      "valor": "[X]",
+      "confianza": 89.111328125,
+      "origen": "FORMS"
+    },
+    "[No]": {
+      "valor": "[ ]",
+      "confianza": 91.69921875,
+      "origen": "FORMS"
+    },
+    "[Principiante]": {
+      "valor": "[ ]",
+      "confianza": 91.69921875,
+      "origen": "FORMS"
+    }
+  },
+  "tablas": [
+    {
+      "filas": [
+        [
+          "Nombre:",
+          "Ana Lucía"
+        ],
+        [
+          "Apellido:",
+          "Sarmiento Vera"
+        ],
+        [
+          "Cédula:",
+          "0103456786"
+        ],
+        [
+          "Correo:",
+          "ana.sarmiento@ejemplo.ec"
+        ],
+        [
+          "Ciudad:",
+          "Cuenca"
+        ],
+        [
+          "Empresa:",
+          "Andina Datos Ejemplo"
+        ],
+        [
+          "Teléfono:",
+          "099 123 4567"
+        ]
+      ],
+      "confianza": 48.81,
+      "titulo": "Datos del participante"
+    }
+  ],
+  "alertas": [],
+  "estado": "OK",
+  "paginas": 1,
+  "costo_usd": 0.0,
+  "modo": "cache/fixtures",
+  "extra": {
+    "evidencias": [
+      "8 SELECTION_ELEMENT (checkboxes)",
+      "'Inscripción' presente",
+      "etiqueta 'Nombre:'",
+      "10 etiquetas tipo \"Campo:\""
+    ],
+    "avisos": [],
+    "confianza_media_palabras": 95.85,
+    "llamadas": [
+      {
+        "clave": "formulario_inscripcion/detect_document_text",
+        "origen": "cache",
+        "costo_usd": 0.0,
+        "paginas": 1
+      },
+      {
+        "clave": "formulario_inscripcion/analyze_document__FORMS_LAYOUT_TABLES",
+        "origen": "cache",
+        "costo_usd": 0.0,
+        "paginas": 1
+      }
+    ]
+  }
+}

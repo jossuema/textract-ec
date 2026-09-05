@@ -1,0 +1,25 @@
+{
+ "documento": "mini",
+ "archivo": "docs/mini.png",
+ "tipo_documento": "desconocido",
+ "lineas": [
+  "Cuenca, 5 de septiembre de 2026",
+  "AWS Community Day Ecuador",
+  "¿Funciona el español? Sí: ñ, á, é, í, ó, ú",
+  "Textract lee esto en 1 llamada"
+ ],
+ "caracteres_especiales": [
+  "ñ",
+  "á",
+  "é",
+  "í",
+  "ó",
+  "ú",
+  "¿"
+ ],
+ "estado_esperado": "REVISAR",
+ "alertas_esperadas": [
+  "tipo de documento no reconocido"
+ ],
+ "nota": "REVISAR es lo correcto y coincide con los fixtures reales del 2026-09-04: mini.png solo tiene 4 líneas de texto, no es factura ni formulario, así que el clasificador lo deja en 'desconocido' y el pipeline pide revisión humana. Además solo existe el fixture de detect_document_text: el pipeline emite 2 avisos (sin FORMS/TABLES y sin QUERIES) y aun así no falla."
+}

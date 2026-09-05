@@ -1,0 +1,124 @@
+{
+  "generado": "2026-09-04T19:09:25",
+  "modo": "local (cache/fixtures)",
+  "rutas": [
+    "docs/"
+  ],
+  "etapas": [
+    "texto",
+    "estructura",
+    "consultas",
+    "clasificar_etapa",
+    "validar",
+    "salida"
+  ],
+  "documentos": [
+    {
+      "documento": "docs/factura_foto.jpg",
+      "stem": "factura_foto",
+      "tipo": "factura",
+      "estado": "OK",
+      "alertas": [],
+      "n_alertas": 0,
+      "paginas": 1,
+      "costo_usd": 0.0,
+      "origenes": [
+        "cache"
+      ],
+      "salida": "salida/factura_foto.validado.json",
+      "motivo": null
+    },
+    {
+      "documento": "docs/factura_limpia.png",
+      "stem": "factura_limpia",
+      "tipo": "factura",
+      "estado": "OK",
+      "alertas": [],
+      "n_alertas": 0,
+      "paginas": 1,
+      "costo_usd": 0.0,
+      "origenes": [
+        "cache"
+      ],
+      "salida": "salida/factura_limpia.validado.json",
+      "motivo": null
+    },
+    {
+      "documento": "docs/factura_trampa.png",
+      "stem": "factura_trampa",
+      "tipo": "factura",
+      "estado": "REVISAR",
+      "alertas": [
+        "clave de acceso con dígito verificador inválido (esperado 3, leído 4)",
+        "ítems no suman el subtotal: ítems 831.60 vs SUBTOTAL 821.60"
+      ],
+      "n_alertas": 2,
+      "paginas": 1,
+      "costo_usd": 0.0,
+      "origenes": [
+        "cache"
+      ],
+      "salida": "salida/factura_trampa.validado.json",
+      "motivo": null
+    },
+    {
+      "documento": "docs/formulario_inscripcion.png",
+      "stem": "formulario_inscripcion",
+      "tipo": "formulario",
+      "estado": "OK",
+      "alertas": [],
+      "n_alertas": 0,
+      "paginas": 1,
+      "costo_usd": 0.0,
+      "origenes": [
+        "cache"
+      ],
+      "salida": "salida/formulario_inscripcion.validado.json",
+      "motivo": null
+    },
+    {
+      "documento": "docs/mini.png",
+      "stem": "mini",
+      "tipo": "desconocido",
+      "estado": "REVISAR",
+      "alertas": [
+        "tipo de documento no reconocido: revisar manualmente"
+      ],
+      "n_alertas": 1,
+      "paginas": 1,
+      "costo_usd": 0.0,
+      "origenes": [
+        "cache"
+      ],
+      "salida": "salida/mini.validado.json",
+      "motivo": null
+    },
+    {
+      "documento": "docs/orden_compra_prosa.png",
+      "stem": "orden_compra_prosa",
+      "tipo": "desconocido",
+      "estado": "REVISAR",
+      "alertas": [
+        "tipo de documento no reconocido: revisar manualmente"
+      ],
+      "n_alertas": 1,
+      "paginas": 1,
+      "costo_usd": 0.0,
+      "origenes": [
+        "cache"
+      ],
+      "salida": "salida/orden_compra_prosa.validado.json",
+      "motivo": null
+    }
+  ],
+  "totales": {
+    "documentos": 6,
+    "ok": 3,
+    "revisar": 3,
+    "sin_datos": 0,
+    "error": 0,
+    "paginas": 6,
+    "costo_usd": 0.0
+  },
+  "nota_costo": "tarifa Oregón, primer millón de páginas/mes, aproximada"
+}

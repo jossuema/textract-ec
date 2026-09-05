@@ -1,0 +1,899 @@
+<title>Textract EC · Workshop</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* ==========================================================================
+   Deck del workshop "Construye un sistema inteligente de OCR con Amazon
+   Textract y Python" — AWS Community Day Ecuador 2026 (UPS, Cuenca).
+   Tema único y deliberado (se proyecta en auditorio): fondo tinta, texto claro.
+   Motivo visual propio: "cajas de confianza" (rectángulos finos con etiqueta
+   de porcentaje verde/ámbar/rojo dibujados sobre fragmentos de papel).
+   ========================================================================== */
+:root{
+  --tinta:#0E1420;      /* fondo */
+  --panel:#172033;      /* paneles, código, tablas */
+  --papel:#F4F1E8;      /* solo superficies "documento" */
+  --texto:#E8ECF2;
+  --suave:#93A0B4;
+  --acento:#FFB84D;     /* ámbar de marcador */
+  --ok:#4ADE80;
+  --medio:#FBBF24;
+  --bajo:#F87171;
+  --linea:rgba(255,255,255,.12);
+  --titulo:"Archivo","Archivo Narrow","Helvetica Neue",Arial,sans-serif;
+  --cuerpo:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono","SFMono-Regular",Menlo,Consolas,"Liberation Mono",monospace;
+  --ancho:min(100vw, 177.78vh);          /* ancho de una slide 16:9 que cabe en pantalla */
+  --u:calc(var(--ancho) * 0.016);         /* 1em de cuerpo ≈ 30.7px a 1920px de ancho */
+  --dur:.18s;
+}
+html,body{margin:0;padding:0;height:100%;background:var(--tinta);color:var(--texto);font-family:var(--cuerpo)}
+body{background:var(--tinta);overflow:hidden}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none !important}   /* el atributo hidden debe ganar a cualquier display de clase */
+::selection{background:var(--acento);color:var(--tinta)}
+
+/* ---------- escenario y slides ---------- */
+.deck{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:var(--tinta)}
+.slide{
+  width:var(--ancho);max-width:100vw;aspect-ratio:16/9;
+  font-size:var(--u);line-height:1.35;
+  padding:2.1em 3em 3.1em;position:relative;overflow:hidden;
+  display:none;flex-direction:column;gap:.7em;
+  animation:aparecer var(--dur) ease-out;
+}
+.slide.activa{display:flex}
+@keyframes aparecer{from{opacity:0;transform:translateY(.3em)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  .slide{animation:none}
+  .progreso{transition:none}
+}
+.slide>*{max-width:100%}
+h1,h2{font-family:var(--titulo);font-weight:800;font-stretch:118%;font-variation-settings:"wdth" 118;line-height:1.04;margin:0;letter-spacing:-.01em}
+h1{font-size:2.3em;font-stretch:122%;font-variation-settings:"wdth" 122}
+h2{font-size:1.95em}
+h2 .kicker,h1 .kicker{display:block;font-family:var(--cuerpo);font-weight:500;font-stretch:100%;font-variation-settings:"wdth" 100;font-size:.42em;color:var(--acento);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.35em}
+p,li{font-size:1em;margin:0}
+ul{margin:0;padding-left:1.1em}
+li{margin:.18em 0}
+li::marker{color:var(--acento)}
+strong{color:#fff;font-weight:600}
+.suave{color:var(--suave)}
+.acento{color:var(--acento)}
+.ok{color:var(--ok)} .medio{color:var(--medio)} .bajo{color:var(--bajo)}
+code{font-family:var(--mono);font-size:.86em;background:var(--panel);padding:.05em .3em;border-radius:.2em;font-variant-numeric:tabular-nums}
+.fila{display:flex;gap:1.4em;align-items:flex-start}
+.fila>*{flex:1 1 0;min-width:0}
+.col2{display:grid;grid-template-columns:1fr 1fr;gap:1.4em;align-items:start}
+.col2>*{min-width:0}
+.crece{flex:1 1 auto}
+.pie-slide{margin-top:auto;color:var(--suave);font-size:.72em}
+
+/* ---------- código y salida de terminal ---------- */
+pre{
+  font-family:var(--mono);font-size:.76em;line-height:1.45;font-variant-numeric:tabular-nums;
+  background:var(--panel);border:1px solid var(--linea);border-radius:.45em;
+  padding:.7em 1em;margin:0;overflow-x:auto;white-space:pre;color:var(--texto);
+}
+pre.grande{font-size:.95em}
+pre.term{background:#0a0f18;border-color:#243049}
+pre.term .p{color:var(--acento)}       /* prompt */
+.kw{color:#93C5FD} .str{color:#FDE68A} .cm{color:var(--suave);font-style:italic} .fn{color:#C4B5FD} .num{color:#F9A8D4}
+.ok-t{color:var(--ok)} .med-t{color:var(--medio)} .baj-t{color:var(--bajo)}
+
+/* ---------- tablas ---------- */
+.tabla{overflow-x:auto;max-width:100%}
+table{width:100%;border-collapse:collapse;font:400 .76em/1.35 var(--mono);color:var(--texto);font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:.38em .65em;border-bottom:1px solid var(--linea);vertical-align:top}
+th{color:var(--acento);font-weight:500;white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+td.c,th.c{text-align:center}
+
+/* ---------- motivo: papel + cajas de confianza ---------- */
+.papel{
+  background:var(--papel);color:#1a2030;font-family:var(--mono);font-variant-numeric:tabular-nums;
+  padding:.9em 1.1em 1.7em;border-radius:.15em;line-height:1.9;font-size:.85em;
+  box-shadow:0 .6em 1.6em rgba(0,0,0,.45), inset 0 0 0 1px rgba(0,0,0,.06);
+  position:relative;
+}
+.papel .pl{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.papel .pl b{font-weight:500}
+.papel .sello{position:absolute;right:.8em;bottom:.5em;font-size:.55em;color:#6b7280;letter-spacing:.08em;text-transform:uppercase}
+.caja{position:relative;display:inline-block;border:2px solid;padding:0 .15em;margin:0 .1em;line-height:1.35;border-radius:2px}
+.caja::after{
+  content:attr(data-conf);position:absolute;top:-1.15em;right:-2px;
+  font:500 .55em/1.25 var(--mono);padding:.05em .4em;border-radius:2px 2px 0 0;color:#0E1420;letter-spacing:.02em
+}
+.caja.ok{border-color:var(--ok)}       .caja.ok::after{background:var(--ok)}
+.caja.medio{border-color:var(--medio)} .caja.medio::after{background:var(--medio)}
+.caja.bajo{border-color:var(--bajo)}   .caja.bajo::after{background:var(--bajo)}
+.papel.inclinado{transform:rotate(-1.6deg)}
+.papel.foto{filter:contrast(.88) brightness(.96);background:#e8e4d8}
+
+/* ---------- portada ---------- */
+.portada{justify-content:center;gap:1em}
+.portada .arriba{display:grid;grid-template-columns:1.25fr .9fr;gap:2em;align-items:center}
+.portada h1{font-size:2.55em}
+.portada .reglas{margin-top:.6em;font-size:.9em}
+.portada .reglas li{margin:.1em 0}
+.qr{
+  width:8.5em;height:8.5em;border:.15em dashed var(--acento);border-radius:.3em;display:flex;align-items:center;justify-content:center;
+  text-align:center;font:500 .62em/1.3 var(--mono);color:var(--acento);padding:.6em;background:repeating-linear-gradient(45deg,transparent 0 .6em,rgba(255,184,77,.06) .6em 1.2em)
+}
+.urlcorta{font:500 1.35em/1.2 var(--mono);color:var(--acento);letter-spacing:.02em}
+.evento{color:var(--suave);font-size:.78em;margin-top:.4em}
+
+/* ---------- diagramas simples ---------- */
+.flujo{display:flex;align-items:center;gap:.5em;flex-wrap:wrap;font-family:var(--mono);font-size:.82em}
+.flujo .n{background:var(--panel);border:1px solid var(--linea);border-radius:.4em;padding:.35em .7em;white-space:nowrap}
+.flujo .n.res{border-color:var(--acento);color:var(--acento)}
+.flujo .f{color:var(--suave)}
+.arbol{font-family:var(--mono);font-size:.8em;line-height:1.5;background:var(--panel);border:1px solid var(--linea);border-radius:.45em;padding:.6em 1em;white-space:pre;overflow-x:auto}
+.arbol .t{color:var(--acento)}
+.semaforo{display:flex;gap:1.2em;font-family:var(--mono);font-size:.85em;flex-wrap:wrap}
+.semaforo span::before{content:"";display:inline-block;width:.6em;height:.6em;border-radius:50%;margin-right:.4em;vertical-align:baseline}
+.semaforo .v::before{background:var(--ok)} .semaforo .a::before{background:var(--medio)} .semaforo .r::before{background:var(--bajo)}
+.destacado{border-left:.28em solid var(--acento);padding:.25em .9em;background:rgba(255,184,77,.07);border-radius:0 .3em .3em 0}
+.cifra{font-family:var(--titulo);font-weight:800;font-size:1.9em;color:var(--acento);line-height:1;font-variation-settings:"wdth" 115}
+.mini{font-size:.72em;color:var(--suave)}
+.solo-print{display:none}
+
+/* ---------- notas del ponente (ocultas en la slide; se muestran en el panel) ---------- */
+.slide aside.notas{display:none}
+.panel-notas{
+  position:fixed;left:0;right:0;bottom:2.6rem;max-height:34vh;overflow:auto;
+  background:var(--panel);border-top:2px solid var(--acento);color:var(--texto);
+  padding:.8rem 1.4rem 1rem;font:400 clamp(15px,1.25vw,22px)/1.45 var(--cuerpo);z-index:20;box-shadow:0 -.6rem 1.6rem rgba(0,0,0,.45)
+}
+.panel-notas h3{margin:0 0 .3rem;font:600 .8em/1.2 var(--cuerpo);color:var(--acento);letter-spacing:.06em;text-transform:uppercase}
+.panel-notas p{margin:.25em 0;font-size:1em}
+.panel-notas code{font-size:.9em}
+
+/* ---------- pie fijo y controles ---------- */
+.pie{
+  position:fixed;left:0;right:0;bottom:0;height:2.6rem;display:flex;align-items:center;gap:1rem;padding:0 1.2rem;
+  background:rgba(14,20,32,.92);border-top:1px solid var(--linea);color:var(--suave);
+  font:500 clamp(12px,.95vw,17px)/1 var(--mono);z-index:30;font-variant-numeric:tabular-nums
+}
+.pie .sep{opacity:.5}
+.pie .min{color:var(--acento)}
+.pie .ctrl{margin-left:auto;display:flex;gap:.4rem}
+.pie>span,.pie .min{white-space:nowrap}
+.pie button{
+  font:inherit;color:var(--texto);background:transparent;border:1px solid var(--linea);border-radius:.3rem;padding:.25rem .6rem;cursor:pointer
+}
+.pie button:hover{border-color:var(--acento);color:var(--acento)}
+.pie button:focus-visible,.deck:focus-visible,a:focus-visible{outline:3px solid var(--acento);outline-offset:2px}
+.progreso{position:fixed;left:0;top:0;height:.28rem;background:var(--acento);width:0;transition:width var(--dur) ease;z-index:30}
+.ayuda{
+  position:fixed;inset:0;z-index:40;background:rgba(14,20,32,.88);display:flex;align-items:center;justify-content:center
+}
+.ayuda>div{background:var(--panel);border:1px solid var(--linea);border-radius:.6rem;padding:1.4rem 1.8rem;font:400 clamp(15px,1.3vw,22px)/1.6 var(--cuerpo);max-width:40rem}
+.ayuda h3{margin:0 0 .4rem;font-family:var(--titulo);font-variation-settings:"wdth" 115;color:var(--acento)}
+.ayuda kbd{font-family:var(--mono);background:var(--tinta);border:1px solid var(--linea);border-radius:.25em;padding:.05em .45em}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- impresión: una slide por página, notas opcionales con ?notas=1 ---------- */
+@media print{
+  :root{--tinta:#ffffff;--panel:#f1f2f5;--texto:#111318;--suave:#4b5563;--linea:#c9ced8;--acento:#9a5b00;--ok:#15803d;--medio:#a16207;--bajo:#b91c1c}
+  html,body{height:auto;overflow:visible;background:#fff}
+  .deck{position:static;display:block;background:#fff}
+  .slide{
+    display:flex !important;width:100%;max-width:none;aspect-ratio:auto;min-height:0;
+    font-size:15pt;padding:10mm 12mm;animation:none;
+    page-break-after:always;break-after:page;page-break-inside:avoid;
+  }
+  .slide:last-of-type{page-break-after:auto;break-after:auto}
+  pre,.arbol{background:#f1f2f5;color:#111;border-color:#c9ced8}
+  pre.term{background:#f1f2f5}
+  .kw{color:#1d4ed8}.str{color:#92400e}.fn{color:#6d28d9}.num{color:#9d174d}.pre .p{color:#9a5b00}
+  .papel{box-shadow:none;border:1px solid #c9ced8}
+  .pie,.panel-notas,.ayuda,.progreso{display:none !important}
+  body.imprimir-notas .slide aside.notas{display:block;margin-top:auto;border-top:1px dashed #9ca3af;padding-top:.4em;font-size:.72em;color:#374151}
+  body.imprimir-notas .slide aside.notas::before{content:"Notas del ponente — ";font-weight:600}
+  .solo-print{display:block;color:#6b7280;font-size:.7em}
+  @page{size:A4 landscape;margin:10mm}
+}
+</style>
+
+<div class="progreso" id="progreso" aria-hidden="true"></div>
+
+<main class="deck" id="deck" tabindex="0" aria-label="Deck del workshop Textract EC. Usa las flechas para navegar; N muestra las notas; ? muestra la ayuda.">
+
+<!-- ================================================================ 1 -->
+<section class="slide portada" data-min="0" aria-label="Slide 1: portada">
+  <div class="arriba">
+    <div>
+      <h1><span class="kicker">AWS Community Day Ecuador 2026 · Workshop</span>Construye un sistema inteligente de OCR con Amazon Textract y Python</h1>
+      <p class="evento">Manuel Josue · Sábado 5 de septiembre · 15:00–16:10 · Auditorio Luis Alberto Luna, UPS Cuenca</p>
+      <ul class="reglas">
+        <li><strong>Sin laptop</strong> → siéntate con alguien que sí tenga.</li>
+        <li><strong>Sin cuenta AWS</strong> → funciona igual (modo <code>offline</code>).</li>
+        <li><strong>Con cuenta</strong> → abre CloudShell en <code>us-east-1</code> <span class="acento">YA</span> (tarda ~1 min).</li>
+      </ul>
+    </div>
+    <div>
+      <div class="papel inclinado" aria-label="Fragmento de factura con cajas de confianza">
+        <div class="pl"><span class="caja ok" data-conf="99.4%">FACTURA No. 001-001-000001234</span></div>
+        <div class="pl">R.U.C.: <span class="caja ok" data-conf="98.7%">1790456129001</span></div>
+        <div class="pl">TECNOLOGÍA ANDINA <span class="caja medio" data-conf="83.1%">EJEMPLO S.A.</span></div>
+        <div class="pl">VALOR TOTAL <span class="caja bajo" data-conf="61.9%">944.84</span></div>
+        <div class="sello">documento ficticio</div>
+      </div>
+    </div>
+  </div>
+  <div class="fila" style="align-items:center;margin-top:.4em">
+    <div class="qr" role="img" aria-label="Marcador para el código QR del repositorio">QR →<br>github.com/jossuema/textract-ec</div>
+    <div style="flex:3">
+      <p class="suave" style="font-size:.85em">Abre esto ahora:</p>
+      <p class="urlcorta">&lt;URL-CORTA&gt;</p>
+      <p class="mini">Reemplazar el QR y la URL corta antes de proyectar (ver ponente/CHECKLIST.md).</p>
+    </div>
+  </div>
+  <aside class="notas">
+    <p><strong>Duración:</strong> 3 min (min 0–3). Proyectada desde antes de las 15:00.</p>
+    <p><strong>Qué decir:</strong> textualmente las tres reglas de la slide. No explicar nada más: el objetivo es que escaneen el QR y que CloudShell empiece a arrancar.</p>
+    <p><strong>Qué hacer:</strong> pedir dos conteos de manos (¿laptop? ¿cuenta AWS?) y anotar el número: decide el plan de recorte. Presentar a los helpers por nombre.</p>
+    <p><strong>Pendiente:</strong> reemplazar el QR y <code>&lt;URL-CORTA&gt;</code> con el repo real.</p>
+  </aside>
+</section>
+
+<!-- ================================================================ 2 -->
+<section class="slide" data-min="1" aria-label="Slide 2">
+  <h2><span class="kicker">Min 1</span>Qué vas a construir hoy (y las 3 reglas)</h2>
+  <div class="flujo" aria-label="Flujo del sistema">
+    <span class="n">imagen / foto</span><span class="f">→</span>
+    <span class="n">Amazon Textract</span><span class="f">→</span>
+    <span class="n">Python: estructura + valida</span><span class="f">→</span>
+    <span class="n res">JSON · estado OK / REVISAR</span>
+  </div>
+  <div class="col2">
+    <div>
+      <p class="acento" style="font-weight:600">Agenda (70 min)</p>
+      <ul>
+        <li>Demo de punta a punta <span class="suave">(7 min)</span></li>
+        <li>Checkpoint 0: clonar y <code>00_check.py</code> <span class="suave">(8)</span></li>
+        <li>Labs 1–4: texto, formularios, capa inteligente, sistema <span class="suave">(32)</span></li>
+        <li>Bonus Bedrock <span class="suave">(5, solo demo)</span> · Cierre <span class="suave">(3)</span></li>
+      </ul>
+    </div>
+    <div>
+      <p class="acento" style="font-weight:600">Reglas</p>
+      <ul>
+        <li>Pairing: nadie se queda mirando la pared.</li>
+        <li>Semáforo de manos en cada checkpoint.</li>
+        <li><code>--offline</code> es tan válido como <code>--online</code>.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="destacado"><strong>Inteligente</strong> = mide confianza + combina fuentes + valida con reglas ecuatorianas. El LLM es opcional.</p>
+  <aside class="notas">
+    <p><strong>Duración:</strong> 2 min (min 1–3).</p>
+    <p><strong>Qué decir:</strong> hoy no se instala nada más que boto3 (ya viene en CloudShell) y el AWS CLI no se usa. El bonus Bedrock es solo demo: la mayoría no podrá ejecutarlo en vivo por el formulario de caso de uso de Anthropic. Honestidad desde el minuto 1.</p>
+    <p><strong>Qué mostrar:</strong> señalar el flujo de una línea y decir que el JSON final es el mismo con o sin cuenta AWS.</p>
+  </aside>
+</section>
+
+<!-- ================================================================ 3 -->
+<section class="slide" data-min="3" aria-label="Slide 3">
+  <h2><span class="kicker">Demo · min 3</span>De la foto al JSON validado</h2>
+  <pre class="term grande"><span class="p">$</span> python3 01_texto.py docs/factura_foto_real.jpg --overlay
+<span class="p">$</span> python3 03_inteligente.py docs/factura_foto_real.jpg   <span class="cm"># OCR robusto</span>
+<span class="p">$</span> python3 03_inteligente.py docs/factura_trampa.png      <span class="cm"># el momento wow</span></pre>
+  <div class="col2">
+    <div class="papel foto" aria-label="Respaldo: overlay de cajas de confianza sobre la foto del celular">
+      <div class="pl">VALOR TOTAL <span class="caja ok" data-conf="99.9%">944.84</span></div>
+      <div class="pl">CLAVE DE ACCESO <span class="caja ok" data-conf="92.4%">…1234567813</span></div>
+      <div class="pl">NÚMERO DE <span class="caja bajo" data-conf="63.1%">AUTORIZACIÓN</span></div>
+      <div class="sello">factura_foto.jpg · WORD 96.2 · estado OK</div>
+    </div>
+    <pre class="term"><span class="cm"># fixtures reales grabados 2026-09-04</span>
+factura_limpia   <span class="ok-t">OK</span>        0 alertas    WORD 98.7
+factura_foto     <span class="ok-t">OK</span>        0 alertas    WORD 96.2
+factura_trampa   <span class="baj-t">REVISAR</span>   2 alertas    WORD 98.7
+
+<span class="cm"># salida/factura_trampa.validado.json → <span class="baj-t">REVISAR</span></span>
+  - clave de acceso con dígito verificador
+    inválido (esperado 3, leído 4)
+  - ítems no suman el subtotal:
+    ítems 831.60 vs SUBTOTAL 821.60</pre>
+  </div>
+  <p class="destacado">La foto del celular se lee casi como el original. El sistema no salta por el OCR: salta porque <strong>el documento está mal</strong>.</p>
+  <aside class="notas">
+    <p><strong>Duración:</strong> 7 min (min 3–10). Hotspot propio, terminal a 24 pt.</p>
+    <p><strong>Qué hacer:</strong> (1) mostrar la factura impresa; (2) si la prueba de T-2h con foto en vivo salió bien, fotografiar ahora y pasar por AirDrop a <code>docs/factura_foto_vivo.jpg</code>; si no, usar <code>docs/factura_foto_real.jpg</code> sin comentarlo (si tampoco existe: <code>docs/factura_foto.jpg</code>); (3) teclear los tres comandos de la slide; (4) abrir el overlay PNG y, al final, el JSON de <code>factura_trampa</code> con estado REVISAR.</p>
+    <p><strong>Qué decir:</strong> todo sale de <code>cache/</code>: como máximo una llamada real. El clímax es la trampa, no la foto. Nunca depurar en escena: si algo falla, <code>--offline</code>.</p>
+    <p><strong>Sobre la foto real del sábado:</strong> con los fixtures reales del 4-sep-2026 <code>factura_foto</code> sale <strong>OK con 0 alertas</strong> (WORD 96.2 · 20 de 173 palabras &lt; 90, casi todas etiquetas con tilde). La foto que tomes en el auditorio puede salir igual de OK o traer alertas de confianza baja: <strong>no prometas alertas de la foto</strong>. Si sale OK, esa es la frase: "Textract es robusto"; si trae alertas, señalarlas y seguir. En ambos casos el remate es <code>factura_trampa</code>.</p>
+  </aside>
+</section>
+
+<!-- ================================================================ 4 -->
+<section class="slide" data-min="10" aria-label="Slide 4">
+  <h2><span class="kicker">Checkpoint 0 · min 10</span>Cuenta, región y modo</h2>
+  <pre class="term grande"><span class="p">$</span> git clone --depth 1 &lt;URL-REPO&gt; &amp;&amp; cd textract-ec
+<span class="p">$</span> python3 00_check.py
+<span class="p">$</span> python3 -m pip install --user pillow   <span class="cm"># opcional: overlay de cajas</span></pre>
+  <div class="col2">
+    <pre class="term"><span class="cm"># ONLINE (con cuenta)</span>
+[ONLINE us-east-1 · perfil personal]
+Python 3.10 · boto3 1.43 · cuenta 1234…9012
+DetectDocumentText mini.png: 4 líneas, ñ y tildes OK
+<span class="ok-t">LISTO</span></pre>
+    <pre class="term"><span class="cm"># OFFLINE (sin cuenta o --offline)</span>
+[OFFLINE · fixtures reales grabados 2026-09-04]
+fixtures/MANIFEST.sha256: <span class="ok-t">OK</span>
+<span class="ok-t">LISTO</span></pre>
+  </div>
+  <ul>
+    <li><span class="bajo">"Timed out while opening the session"</span> → CloudShell bloqueado: usa tu laptop o el zip del USB.</li>
+    <li><span class="bajo">Rojo</span> AccessDenied / EndpointConnection → <code>python3 00_check.py --offline</code> y sigues.</li>
+  </ul>
+  <aside class="notas">
+    <p><strong>Duración:</strong> 8 min (min 10–18). El bloque más importante: caminar por la sala con los helpers.</p>
+    <p><strong>Qué decir:</strong> <code>00_check.py</code> imprime el account id porque <code>sts:GetCallerIdentity</code> no requiere permisos; imprime la región porque Textract no existe en sa-east-1. Sin credenciales cae solo a OFFLINE (aviso amarillo): es lo esperado, no un error. Cualquier otro error sale en rojo con la línea <code>--offline</code>.</p>
+    <p><strong>Decisión (min 16):</strong> semáforo de manos. Con más del 30 % en rojo, Lab 3 pasa a demo y el bonus se elimina.</p>
+    <p><strong>Pendiente:</strong> reemplazar <code>&lt;URL-REPO&gt;</code> por la URL real del repo.</p>
+  </aside>
+</section>
+
+<!-- ================================================================ 5 -->
+<section class="slide" data-min="18" aria-label="Slide 5">
+  <h2><span class="kicker">Modelo mental · min 18</span>Cómo piensa Textract: la respuesta es un grafo</h2>
+  <div class="col2">
+    <div class="arbol"><span class="t">PAGE</span>
+ ├─ CHILD → <span class="t">LINE</span> ── CHILD → <span class="t">WORD</span> (Text, Confidence)
+ ├─ CHILD → <span class="t">KEY_VALUE_SET</span> [KEY] ── VALUE → [VALUE]
+ ├─ CHILD → <span class="t">TABLE</span> ── CHILD → <span class="t">CELL</span> (Row/ColumnIndex)
+ └─ CHILD → <span class="t">QUERY</span> ── ANSWER → <span class="t">QUERY_RESULT</span>
+
+Block = { Id, BlockType, Confidence 0-100,
+          Geometry.BoundingBox 0-1,
+          Relationships: [{Type, Ids}] }</div>
+    <pre><span class="cm"># textract_lab/bloques.py — las 8 líneas</span>
+<span class="kw">def</span> <span class="fn">indice</span>(resp):
+    <span class="kw">return</span> {b[<span class="str">'Id'</span>]: b <span class="kw">for</span> b <span class="kw">in</span> resp[<span class="str">'Blocks'</span>]}
+
+<span class="kw">def</span> <span class="fn">hijos</span>(b, by_id, tipo=<span class="str">'CHILD'</span>):
+    <span class="kw">return</span> [by_id[i] <span class="kw">for</span> r <span class="kw">in</span> b.get(<span class="str">'Relationships'</span>, [])
+            <span class="kw">if</span> r[<span class="str">'Type'</span>] == tipo <span class="kw">for</span> i <span class="kw">in</span> r[<span class="str">'Ids'</span>]]
+
+<span class="kw">def</span> <span class="fn">texto</span>(b, by_id):
+    <span class="kw">return</span> <span class="str">' '</span>.join(w[<span class="str">'Text'</span>] <span class="kw">for</span> w <span class="kw">in</span> hijos(b, by_id)
+                    <span class="kw">if</span> w[<span class="str">'BlockType'</span>] == <span class="str">'WORD'</span>)</pre>
+  </div>
+  <p class="destacado"><strong>Los hijos no conocen a su padre:</strong> se construye <code>by_id</code> y se navega de arriba hacia abajo con <code>hijos()</code>.</p>
+  <aside class="notas">
+    <p><strong>Duración:</strong> 2 min (min 18–20).</p>
+    <p><strong>Qué mostrar:</strong> abrir el fixture JSON real <code>fixtures/factura_limpia/detect_document_text.json</code> y señalar un PAGE, un LINE con <code>Relationships CHILD</code> y un WORD con <code>Confidence</code> y <code>BoundingBox</code>. Luego las 8 líneas de <code>bloques.py</code>.</p>
+    <p><strong>Qué decir:</strong> esta pieza resuelve el 90 % del parseo; todo lo demás son variaciones de <code>hijos()</code>. La versión completa de <code>texto()</code> también convierte SELECTION_ELEMENT en <code>[X]</code> / <code>[ ]</code>.</p>
+  </aside>
+</section>
+
+<!-- ================================================================ 6 -->
+<section class="slide" data-min="20" aria-label="Slide 6">
+  <h2><span class="kicker">Min 20</span>Límites que importan hoy</h2>
+  <div class="tabla">
+    <table>
+      <thead><tr><th>Tema</th><th>Lo que aplica hoy</th></tr></thead>
+      <tbody>
+        <tr><td>Síncrono</td><td>1 página por llamada · &lt; 10 MB · PNG / JPEG / PDF / TIFF <span class="suave">(API_Document aún dice 5 MB: la cifra operativa es 10 MB)</span></td></tr>
+        <tr><td>Idiomas</td><td>Texto <strong>impreso en español: SÍ</strong> (á é í ó ú ñ ¿ ¡) · manuscrito: solo inglés · AnalyzeExpense: solo inglés · AnalyzeID: solo EE. UU.</td></tr>
+        <tr><td>Queries</td><td>Solo inglés y <strong>ASCII puro</strong> (sin tildes, ñ ni ¿) · máx. 15 por página en sync · texto ≤ 200 caracteres</td></tr>
+        <tr><td>Región</td><td><strong>us-east-1</strong>: Textract no existe en sa-east-1 (São Paulo)</td></tr>
+        <tr><td>Cuotas</td><td>DetectDocumentText 25 TPS · AnalyzeDocument 10 TPS por cuenta (ajustables)</td></tr>
+        <tr><td>Asíncrono</td><td>Solo desde S3 (misma región) · hasta 3.000 páginas · hoy no lo usamos (<code>extra/07_async_s3.py</code>)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <aside class="notas">
+    <p><strong>Duración:</strong> 2 min (min 20–22). Una frase por fila, sin leerla entera.</p>
+    <p><strong>Qué decir:</strong> anticipar la pregunta de las cédulas: AnalyzeID no sirve (solo pasaportes y licencias de EE. UU.); usamos FORMS / QUERIES. Queries sobre documentos en español está fuera del soporte oficial: hoy lo probamos y por eso combinamos fuentes.</p>
+    <p><strong>Fuentes:</strong> docs limits-document.html, API_Query.html, FAQ de Textract y AWS General Reference (todo verificado el 2-sep-2026).</p>
+  </aside>
+</section>
+
+<!-- ================================================================ 7 -->
+<section class="slide" data-min="22" aria-label="Slide 7">
+  <h2><span class="kicker">Lab 1 · min 22</span>DetectDocumentText y confianza</h2>
+  <pre class="term"><span class="p">$</span> python3 01_texto.py docs/factura_limpia.png --overlay
+<span class="p">$</span> python3 01_texto.py docs/factura_foto.jpg --overlay      <span class="cm"># o factura_foto_real.jpg</span></pre>
+  <div class="col2">
+    <pre><span class="cm"># 01_texto.py (núcleo)</span>
+<span class="kw">from</span> textract_lab.cliente <span class="kw">import</span> llamar
+<span class="kw">from</span> textract_lab.bloques <span class="kw">import</span> lineas, confianza_media
+<span class="kw">from</span> textract_lab.consola <span class="kw">import</span> semaforo
+
+resp = llamar(<span class="str">'detect_document_text'</span>, documento)
+<span class="kw">for</span> txt, conf <span class="kw">in</span> lineas(resp):
+    print(semaforo(conf), <span class="str">f'{conf:5.1f}'</span>, txt)
+print(<span class="str">'confianza media WORD:'</span>,
+      round(confianza_media(resp, <span class="str">'WORD'</span>), <span class="num">1</span>))</pre>
+    <div>
+      <div class="papel" aria-label="Fragmento de factura limpia con cajas de confianza">
+        <div class="pl"><span class="caja ok" data-conf="99.6%">FECHA EMISION: 01/09/2026</span></div>
+        <div class="pl"><span class="caja ok" data-conf="99.1%">SUBTOTAL 15%</span> <span class="caja ok" data-conf="98.9%">821.60</span></div>
+        <div class="pl"><span class="caja ok" data-conf="99.3%">IVA 15%</span> <span class="caja ok" data-conf="99.0%">123.24</span></div>
+        <div class="sello">factura_limpia.png</div>
+      </div>
+      <p class="mini" style="margin-top:.6em">Salida: líneas con semáforo · confianza media · palabras &lt; 90 · <code>salida/&lt;doc&gt;.overlay.png</code> (Pillow) o <code>docs/salidas/</code>.</p>
+      <p class="mini" style="margin-top:.35em">Cifras reales (fixtures del 4-sep-2026): <strong>limpia</strong> LINE <span class="ok">98.9</span> · WORD <span class="ok">98.7</span> · 5 de 172 palabras &lt; 90 — <strong>foto</strong> LINE <span class="ok">97.3</span> · WORD <span class="ok">96.2</span> · 20 de 173 &lt; 90.</p>
+    </div>
+  </div>
+  <aside class="notas">
+    <p><strong>Duración:</strong> 10 min (min 22–32).</p>
+    <p><strong>Qué hacer:</strong> live coding LENTO (sin copy-paste) de <code>texto()</code> y del bucle sobre LINE (5 min). Ejecutar los dos comandos y comparar: WORD 98.7 en la limpia contra 96.2 en la foto (LINE 98.9 contra 97.3). El overlay se muestra desde la Mac: CloudShell no muestra imágenes (Actions → Download file).</p>
+    <p><strong>Qué decir de las cifras:</strong> la caída existe pero es pequeña — 2.5 puntos —, no el desplome que uno esperaría de una foto de celular. Lo que cambia de verdad es el número de palabras dudosas: 5 de 172 contra 20 de 173. La media no decide nada; deciden los campos concretos que bajan.</p>
+    <p><strong>Qué decir:</strong> DetectDocumentText es la operación barata (25 TPS, US$ 0.0015/pág, tarifa Oregón aprox.): por eso es el ejercicio masivo del taller.</p>
+    <p><strong>Ejercicio de 2 min:</strong> listar solo las palabras con Confidence &lt; 90 y luego &lt; 95.</p>
+  </aside>
+</section>
+
+<!-- ================================================================ 8 -->
+<section class="slide" data-min="28" aria-label="Slide 8">
+  <h2><span class="kicker">Min 28</span>Confianza: qué es y qué hacer con ella</h2>
+  <div class="col2">
+    <div>
+      <ul>
+        <li><code>Confidence</code> 0–100 por bloque; KEY y VALUE comparten la suya.</li>
+        <li>Umbrales que sugiere AWS: <strong>~50</strong> para archivo, <strong>≥ 90</strong> para decisiones financieras.</li>
+        <li><code>BoundingBox</code> normalizado 0–1 → píxel = valor × ancho (o alto).</li>
+        <li>Tolera rotación en el plano; no corrige perspectiva ni desenfoque.</li>
+      </ul>
+      <div class="semaforo" style="margin-top:.7em"><span class="v">≥ 90 verde</span><span class="a">70–90 ámbar</span><span class="r">&lt; 70 rojo</span></div>
+    </div>
+    <div>
+      <div class="papel foto" aria-label="Fragmento de la foto con las confianzas reales: montos altos, etiquetas con tilde bajas">
+        <div class="pl"><span class="caja ok" data-conf="98.3%">2</span> <span class="caja ok" data-conf="99.6%">Monitor 27" 4K</span> <span class="caja ok" data-conf="99.9%">700.00</span></div>
+        <div class="pl"><span class="caja ok" data-conf="99.9%">VALOR TOTAL</span> <span class="caja ok" data-conf="99.9%">944.84</span></div>
+        <div class="pl">NÚMERO DE <span class="caja bajo" data-conf="63.1%">AUTORIZACIÓN</span> · <span class="caja bajo" data-conf="71.6%">Dirección</span></div>
+        <div class="sello">factura_foto.jpg · fixture real</div>
+      </div>
+      <p class="mini" style="margin-top:.6em">Cifras reales del 4-sep-2026 — media WORD: limpia <span class="ok">98.7</span> · foto <span class="ok">96.2</span>; media LINE: <span class="ok">98.9</span> · <span class="ok">97.3</span>. Palabras &lt; 90: <strong>5 de 172</strong> contra <strong>20 de 173</strong>.</p>
+    </div>
+  </div>
+  <p class="destacado">La media casi no se mueve (98.7 → 96.2). Lo que decide no es la media: es <strong>qué campos concretos bajan</strong>.</p>
+  <aside class="notas">
+    <p><strong>Duración:</strong> 4 min (min 28–32), dentro del Lab 1.</p>
+    <p><strong>Qué decir:</strong> Textract resultó mucho más robusto de lo esperado: la foto del celular pierde 2.5 puntos de media WORD, no 20. Lo que sí cambia es la cola: de 5 a 20 palabras por debajo de 90. Y esas 20 son casi todas etiquetas con tilde y texto decorativo (AUTORIZACIÓN 63.1, PRODUCCIÓN 66.3, Dirección 71.6), no los montos: 944.84 sale con 99.9 y la clave de acceso con 92.4. Con ≥ 90 en montos e identificadores tomamos decisiones; por debajo, cola de revisión.</p>
+    <p><strong>Remate:</strong> por eso un promedio alto no basta como criterio de aceptación — hay que mirar campo por campo, que es exactamente lo que hace el validador del Lab 3.</p>
+    <p><strong>Ejercicio de 2 min:</strong> listar las palabras por debajo de 95 en la foto y comentar cuáles importan (montos y clave de acceso) y cuáles no (dirección, etiquetas).</p>
+  </aside>
+</section>
+
+<!-- ================================================================ 9 -->
+<section class="slide" data-min="35" aria-label="Slide 9">
+  <h2><span class="kicker">Lab 2 · min 35</span>FORMS + TABLES + LAYOUT: tu único TODO</h2>
+  <pre class="term"><span class="p">$</span> python3 02_formulario_tabla.py docs/factura_limpia.png --csv
+<span class="p">$</span> python3 02_formulario_tabla.py docs/formulario_inscripcion.png</pre>
+  <div class="col2">
+    <pre><span class="cm"># TODO en 02_formulario_tabla.py (6-8 líneas)</span>
+<span class="kw">def</span> <span class="fn">mi_pares_clave_valor</span>(resp):
+    by_id, pares = indice(resp), {}
+    <span class="kw">for</span> b <span class="kw">in</span> resp[<span class="str">'Blocks'</span>]:
+        <span class="kw">if</span> (b[<span class="str">'BlockType'</span>] == <span class="str">'KEY_VALUE_SET'</span>
+                <span class="kw">and</span> <span class="str">'KEY'</span> <span class="kw">in</span> b.get(<span class="str">'EntityTypes'</span>, [])):
+            valor = hijos(b, by_id, tipo=<span class="str">'VALUE'</span>)[<span class="num">0</span>]
+            clave = texto(b, by_id).rstrip(<span class="str">':'</span>).strip()
+            pares[clave] = texto(valor, by_id)
+    <span class="kw">return</span> pares</pre>
+    <div>
+      <ul>
+        <li>KEY <span class="suave">─VALUE→</span> VALUE; <code>EntityTypes</code> distingue cuál es cuál.</li>
+        <li>SELECTION_ELEMENT dentro del VALUE → <code>[X]</code> / <code>[ ]</code>: "Nivel: Intermedio" → <code>[X]</code>.</li>
+        <li>TABLE → CELL con <code>RowIndex</code> / <code>ColumnIndex</code> → <code>salida/factura_limpia.detalle.csv</code>.</li>
+        <li>LAYOUT sale sin costo extra junto a TABLES.</li>
+        <li>Autoverificación: <span class="ok">✔ tu implementación coincide</span>.</li>
+      </ul>
+      <p class="mini" style="margin-top:.5em">Si no llegas: <code>cp checkpoints/lab2/02_formulario_tabla.py .</code></p>
+    </div>
+  </div>
+  <aside class="notas">
+    <p><strong>Duración:</strong> 11 min (min 35–46). Único momento en que la sala escribe código: ir despacio.</p>
+    <p><strong>Qué hacer:</strong> explicar en 1 min KEY/VALUE (EntityTypes, relación VALUE) y CELL (RowIndex/ColumnIndex). Live coding del TODO en el propio script. Ejecutar sobre <code>factura_limpia.png</code>: el script compara el TODO con <code>bloques.pares_clave_valor</code> e imprime "✔ tu implementación coincide" (si el TODO está vacío, usa la librería y avisa). Luego <code>formulario_inscripcion.png</code>: Track "Workshop OCR" [X], cuenta AWS "Sí" [X], Nivel "Intermedio" [X].</p>
+    <p><strong>Qué decir:</strong> las claves vienen con ":" y tildes; por eso se normalizan. Es la llamada cara (US$ 0.065/pág, tarifa Oregón aprox.): ejecutar solo 2 veces, el cache evita repetirla.</p>
+  </aside>
+</section>
+
+<!-- ================================================================ 10 -->
+<section class="slide" data-min="46" aria-label="Slide 10">
+  <h2><span class="kicker">Checkpoint 2 · min 46</span>¿Tienes el dict y el CSV?</h2>
+  <div class="semaforo" style="font-size:1em"><span class="v">Verde: dict + CSV listos</span><span class="a">Ámbar: el TODO no coincide</span><span class="r">Rojo: nada corre</span></div>
+  <pre class="term grande"><span class="cm"># si no llegaste:</span>
+<span class="p">$</span> cp checkpoints/lab2/02_formulario_tabla.py .
+<span class="p">$</span> python3 02_formulario_tabla.py docs/factura_limpia.png --csv</pre>
+  <div class="col2">
+    <div class="destacado"><strong>Decisión A:</strong> Lab 3 en manos de todos (reloj en hora).</div>
+    <div class="destacado"><strong>Decisión B:</strong> Lab 3 como demo del ponente (más de 3 min de retraso) y sin bonus.</div>
+  </div>
+  <aside class="notas">
+    <p><strong>Duración:</strong> 2 min exactos (min 46–48).</p>
+    <p><strong>Qué hacer:</strong> semáforo de manos; anunciar en voz alta la decisión A o B. Si el reloj va más de 3 minutos atrasado: Lab 3 pasa a demo con ejecución opcional y se elimina el bonus.</p>
+    <p><strong>Nunca tocar:</strong> el Lab 4 corto ni los 3 minutos de cierre.</p>
+  </aside>
+</section>
+
+<!-- ================================================================ 11 -->
+<section class="slide" data-min="48" aria-label="Slide 11">
+  <h2><span class="kicker">Lab 3 · min 48</span>La capa inteligente sin LLM</h2>
+  <pre class="term"><span class="p">$</span> python3 03_inteligente.py docs/factura_limpia.png     <span class="cm"># → OK</span>
+<span class="p">$</span> python3 03_inteligente.py docs/factura_trampa.png     <span class="cm"># → REVISAR</span></pre>
+  <div class="col2">
+    <pre><span class="cm"># 03_inteligente.py (núcleo)</span>
+<span class="kw">from</span> textract_lab.queries <span class="kw">import</span> QUERIES_FACTURA  <span class="cm"># 7</span>
+resp_q = llamar(<span class="str">'analyze_document'</span>, doc,
+        feature_types=[<span class="str">'QUERIES'</span>], queries=QUERIES_FACTURA)
+resp_f = llamar(<span class="str">'analyze_document'</span>, doc,   <span class="cm"># cache Lab 2</span>
+        feature_types=[<span class="str">'FORMS'</span>, <span class="str">'TABLES'</span>, <span class="str">'LAYOUT'</span>])
+campos = respuestas_queries(resp_q)      <span class="cm"># alias → Campo</span>
+forms = pares_clave_valor(resp_f)    <span class="cm"># etiqueta → Campo</span>
+<span class="cm"># por campo gana la fuente con mayor confianza (origen)</span>
+alertas = validar_factura(campos, tablas(resp_f))
+print(estado_final(alertas), alertas)</pre>
+    <div>
+      <ul>
+        <li>Queries en inglés y ASCII: <code>'What is the CLAVE DE ACCESO?'</code> → <code>CLAVE_ACCESO</code>.</li>
+        <li>Las <strong>7 queries en inglés SÍ respondieron</strong> sobre la factura en español (RUC 99.0 · IVA_15 99.0 · VALOR_TOTAL 98.0): funcionó, pero <span class="medio">fuera del soporte oficial</span>.</li>
+        <li><code>Campo(valor, confianza, origen)</code>: gana la fuente con mayor confianza.</li>
+      </ul>
+      <pre class="term" style="margin:.4em 0;font-size:.62em"><span class="cm"># quién compitió por cada campo (factura_limpia)</span>
+CLAVE_ACCESO  QUERIES <span class="med-t">83.0</span> · FORMS <span class="ok-t">95.0</span> → gana <span class="ok-t">FORMS</span>
+VALOR_TOTAL   QUERIES <span class="ok-t">98.0</span> · FORMS 95.2 → gana <span class="ok-t">QUERIES</span></pre>
+      <p class="mini">Validadores: módulo 11 (RUC, clave de 49 dígitos), módulo 10 (cédula), regex <code>001-001-000001234</code>, fecha, ítems = subtotal, subtotal × 0.15 = IVA, suma = total, confianza ≥ 90.</p>
+    </div>
+  </div>
+  <p class="destacado">En el campo más largo (49 dígitos) Queries baja y <strong>gana FORMS</strong>. Esa es la razón de combinar fuentes, no la teoría.</p>
+  <aside class="notas">
+    <p><strong>Duración:</strong> 7 min (min 48–55).</p>
+    <p><strong>Qué mostrar:</strong> <code>textract_lab/queries.py</code> (7 queries, alias en MAYÚSCULAS ASCII, "FECHA EMISION" sin tilde a propósito) y explicar en 30 s por qué inglés y ASCII (el patrón de <code>Query.Text</code> rechaza tildes y ¿). Ejecutar los dos comandos.</p>
+    <p><strong>Qué decir (dato real, es el oro de la slide):</strong> las 7 queries escritas en inglés respondieron todas sobre un documento en español — la documentación dice "solo inglés", así que funcionó pero fuera del soporte oficial. Y justo por eso no apostamos a una sola fuente: en <code>factura_limpia</code> Queries gana casi todo, pero en <code>CLAVE_ACCESO</code> — los 49 dígitos — Queries cae a 83.0 y FORMS lo lee con 95.0. Gana FORMS. También <code>SUBTOTAL_SIN_IMPUESTOS</code> y <code>PROPINA</code> los aporta FORMS, porque Queries ni los pide.</p>
+    <p><strong>Ojo:</strong> en la foto ese mismo campo cae a 73.0 en Queries. El campo largo es siempre el más frágil; el <code>origen</code> del <code>Campo</code> deja rastro de quién ganó.</p>
+    <p><strong>Ejercicio de 2 min:</strong> agregar a <code>VALIDADORES_EXTRA</code> una función <code>fecha_no_futura(campos)</code>.</p>
+  </aside>
+</section>
+
+<!-- ================================================================ 12 -->
+<section class="slide" data-min="52" aria-label="Slide 12">
+  <h2><span class="kicker">Min 52</span>factura_trampa: validar el negocio, no solo el OCR</h2>
+  <div class="col2">
+    <div class="papel" aria-label="Fragmento de factura_trampa: todas las cajas verdes, el OCR fue perfecto">
+      <div class="pl">1 · Teclado mecánico ES · 85.60 · <span class="caja ok" data-conf="99.8%">95.60</span></div>
+      <div class="pl">SUBTOTAL 15% <span class="caja ok" data-conf="99.9%">821.60</span> <span class="suave">(ítems suman 831.60)</span></div>
+      <div class="pl">CLAVE DE ACCESO …3412345678<span class="caja ok" data-conf="94.8%">14</span></div>
+      <div class="sello">todo verde · error en el documento</div>
+    </div>
+    <pre class="term"><span class="cm"># 03_inteligente.py docs/factura_trampa.png (fixture real)</span>
+  alertas:
+  - clave de acceso con dígito verificador
+    inválido (esperado 3, leído 4)
+  - ítems no suman el subtotal:
+    ítems 831.60 vs SUBTOTAL 821.60
+
+  ESTADO:  <span class="baj-t">REVISAR</span>   (2 alerta(s) → cola humana)
+<span class="cm"># media WORD 98.7 · 0 alertas de confianza:
+# el OCR no falló ni una vez</span></pre>
+  </div>
+  <p class="destacado">Confianza casi perfecta y el documento igual está mal. <strong>Ninguna métrica del OCR habría atrapado esto</strong>: lo atrapan las reglas de negocio.</p>
+  <p class="mini">Ejercicio: agrega <code>fecha_no_futura()</code> a <code>VALIDADORES_EXTRA</code>. Human-in-the-loop = estado REVISAR + tu propia cola (A2I está en mantenimiento desde julio 2026).</p>
+  <aside class="notas">
+    <p><strong>Duración:</strong> 3 min (min 52–55), dentro del Lab 3. Este es el momento fuerte del taller.</p>
+    <p><strong>Qué decir:</strong> transparencia: "estos dos errores los puse yo en el documento: el ítem 2 dice 95.60 en vez de 85.60 y la clave termina en 4 en vez de 3". Señalar que Textract leyó los dos errores <em>perfectamente</em> — 99.8 y 99.9 en los montos, 94.8 en la clave — y que ese es justamente el punto: un OCR impecable no dice nada sobre si el documento es correcto. Mensaje: OCR + validación determinista = sistema inteligente sin LLM.</p>
+    <p><strong>Qué mostrar:</strong> como contraste, <code>python3 03_inteligente.py docs/factura_foto.jpg</code> (o factura_foto_real.jpg): con los fixtures reales sale <strong>OK con 0 alertas</strong>. Si la foto del sábado trae alguna alerta de confianza baja, mejor todavía; si no, el contraste sigue funcionando: la foto pasa, la trampa no.</p>
+  </aside>
+</section>
+
+<!-- ================================================================ 13 -->
+<section class="slide" data-min="55" aria-label="Slide 13">
+  <h2><span class="kicker">Lab 4 · min 55</span>Esto es un sistema</h2>
+  <pre class="term"><span class="p">$</span> python3 04_sistema.py docs/        <span class="cm"># solo cache/fixtures; --online para llamar</span></pre>
+  <div class="col2">
+    <pre><span class="cm"># textract_lab/etapas.py</span>
+ETAPAS = [texto, estructura, consultas,
+          clasificar_etapa, validar, salida]
+
+<span class="kw">def</span> <span class="fn">procesar_documento</span>(documento, modo=<span class="kw">None</span>,
+                       con_queries=<span class="kw">True</span>):
+    ctx = {<span class="str">'documento'</span>: documento, <span class="str">'modo'</span>: modo,
+           <span class="str">'con_queries'</span>: con_queries}
+    <span class="kw">for</span> etapa <span class="kw">in</span> ETAPAS:
+        ctx = etapa(ctx)     <span class="cm"># recibe y devuelve ctx</span>
+    <span class="kw">return</span> ctx[<span class="str">'resultado'</span>]  <span class="cm"># Resultado(...)</span></pre>
+    <div class="tabla">
+      <table>
+        <thead><tr><th>documento</th><th>tipo</th><th>estado</th><th class="c">alertas</th><th class="c">US$</th></tr></thead>
+        <tbody>
+          <tr><td>factura_limpia</td><td>factura</td><td class="ok">OK</td><td class="c">0</td><td class="c">0.00</td></tr>
+          <tr><td>factura_trampa</td><td>factura</td><td class="bajo">REVISAR</td><td class="c">2</td><td class="c">0.00</td></tr>
+          <tr><td>factura_foto</td><td>factura</td><td class="ok">OK</td><td class="c">0</td><td class="c">0.00</td></tr>
+          <tr><td>formulario_inscripcion</td><td>formulario</td><td class="ok">OK</td><td class="c">0</td><td class="c">0.00</td></tr>
+          <tr><td>orden_compra_prosa</td><td>desconocido</td><td class="bajo">REVISAR</td><td class="c">1</td><td class="c">0.00</td></tr>
+          <tr><td>mini</td><td>desconocido</td><td class="bajo">REVISAR</td><td class="c">1</td><td class="c">0.00</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <p class="mini">Resumen: <span class="ok">3 OK</span> · <span class="bajo">3 REVISAR</span> · 0 SIN DATOS <span class="suave">(fixtures reales grabados el 4-sep-2026)</span>. Dataclasses <code>Campo(valor, confianza, origen)</code> y <code>Resultado</code>. Puntos de extensión: cola de revisión (REVISAR), base de datos, LLM o BDA en <code>clasificar</code> o en una etapa nueva.</p>
+  <aside class="notas">
+    <p><strong>Duración:</strong> 4 min (min 55–59): ejecutar y señalar.</p>
+    <p><strong>Qué decir:</strong> un pipeline es una lista de funciones ctx → ctx. <code>clasificar.py</code> es trivial a propósito (SELECTION_ELEMENT → formulario, "CLAVE DE ACCESO" → factura, nada → desconocido) y el valor está en que el resto no cambia cuando se reemplaza por reglas más ricas, un LLM o BDA. Señalar la última línea: "Costo estimado de esta corrida: US$ 0.00 (todo desde cache/fixtures)". Anticipar "¿por qué mini sale REVISAR?": <code>mini.png</code> no es factura ni formulario (4 líneas sin RUC ni checkbox) y un tipo desconocido siempre va a revisión.</p>
+    <p><strong>Cómo leer la tabla:</strong> 3 OK · 3 REVISAR. Las dos facturas bien formadas pasan — incluida la foto del celular, que sale OK con 0 alertas — y a revisión van solo la trampa (errores reales del documento) y los dos documentos de tipo desconocido. Ese reparto es el que uno quiere en producción: la cola de revisión se llena de casos que de verdad la necesitan.</p>
+    <p><strong>Qué mostrar:</strong> <code>salida/resumen.json</code>. Quien va atrasado en Labs 2-3 igual puede correrlo: usa la librería.</p>
+  </aside>
+</section>
+
+<!-- ================================================================ 14 -->
+<section class="slide" data-min="59" aria-label="Slide 14">
+  <h2><span class="kicker">Bonus (demo) · min 59</span>Textract extrae, Bedrock razona</h2>
+  <pre><span class="cm"># textract_lab/bedrock.py — Converse con salida estructurada (Claude Haiku 4.5)</span>
+MODELO = <span class="str">'us.anthropic.claude-haiku-4-5-20251001-v1:0'</span>   <span class="cm"># nunca el ID base en us-east-1</span>
+resp = client.converse(
+    modelId=MODELO,
+    system=[{<span class="str">'text'</span>: SYSTEM_PROMPT_ES}],                  <span class="cm"># "no inventes; vacío + alerta"</span>
+    messages=[{<span class="str">'role'</span>: <span class="str">'user'</span>, <span class="str">'content'</span>: [{<span class="str">'text'</span>: texto_y_campos}]}],
+    inferenceConfig={<span class="str">'temperature'</span>: <span class="num">0</span>, <span class="str">'maxTokens'</span>: <span class="num">1024</span>},
+    outputConfig={<span class="str">'textFormat'</span>: {<span class="str">'type'</span>: <span class="str">'json_schema'</span>, <span class="str">'structure'</span>: {
+        <span class="str">'jsonSchema'</span>: {<span class="str">'name'</span>: <span class="str">'documento'</span>, <span class="str">'schema'</span>: json.dumps(SCHEMA_DOCUMENTO)}}}})
+salida = json.loads(resp[<span class="str">'output'</span>][<span class="str">'message'</span>][<span class="str">'content'</span>][<span class="num">0</span>][<span class="str">'text'</span>])
+alertas += validar_factura(salida_como_campos, tablas)   <span class="cm"># el LLM propone, el módulo 11 dispone</span></pre>
+  <ul>
+    <li>Fallback: <code>amazon.nova-lite-v1:0</code> con <code>toolConfig</code> + <code>toolChoice</code> forzado (Nova no soporta structured outputs).</li>
+    <li>Costo por factura ≈ US$ 0.003 con Haiku 4.5 (<code>usage</code> en pantalla; precios de Bedrock aprox., confirmar).</li>
+  </ul>
+  <aside class="notas">
+    <p><strong>Duración:</strong> 5 min (min 59–64). Primera candidata a recorte.</p>
+    <p><strong>Qué teclear:</strong> <code>python3 05_bonus_bedrock.py docs/orden_compra_prosa.png</code> y luego <code>python3 05_bonus_bedrock.py docs/factura_foto.jpg</code> (o factura_foto_real.jpg). Si tarda &gt; 20 s o falla: <code>--modelo nova</code>; si falla: <code>--offline</code>. Nunca depurar en escena.</p>
+    <p><strong>Qué decir:</strong> los asistentes necesitan el formulario de caso de uso de Anthropic y una suscripción de Marketplace de hasta 15 min: <code>bonus/README.md</code> para casa. El esquema se precalienta con <code>tools/precalentar_esquema.py</code> (la primera compilación tarda minutos). Vía de escape: el endpoint bedrock-mantle no exige el formulario pero requiere el SDK anthropic; no lo usamos.</p>
+  </aside>
+</section>
+
+<!-- ================================================================ 15 -->
+<section class="slide" data-min="61" aria-label="Slide 15">
+  <h2><span class="kicker">Min 61</span>Sobre prosa, Queries se equivoca con seguridad</h2>
+  <div class="col2">
+    <pre class="term"><span class="cm"># orden_compra_prosa.png (prosa) — fixture real</span>
+Queries → PROVEEDOR      <span class="baj-t">'Gerente de Compras'</span>  <span class="med-t">60.0</span> ✗
+          CANT_MONITORES <span class="baj-t">'27'</span>                  <span class="ok-t">99.0</span> ✗
+          TOTAL_COMPRA   <span class="suave">sin respuesta</span>              ✓
+<span class="cm"># ✗ 'Gerente de Compras' = el cargo del firmante
+# ✗ 27 son las pulgadas; la cantidad es 3
+# ✓ el total 1221.20 no está escrito: hay que sumarlo</span>
+LLM → {<span class="str">"emisor"</span>: <span class="str">"Tecnología Andina Ejemplo S.A."</span>,
+       <span class="str">"items"</span>: [{<span class="str">"descripcion"</span>: <span class="str">"monitor 27"</span>,
+          <span class="str">"cantidad"</span>: <span class="num">3</span>, <span class="str">"precio_unitario"</span>: <span class="num">350.0</span>}, …],
+       <span class="str">"total"</span>: <span class="ok-t">1221.20</span>, <span class="str">"moneda"</span>: <span class="str">"USD"</span>, <span class="str">"alertas"</span>: []}</pre>
+    <div class="tabla">
+      <table>
+        <thead><tr><th>Necesidad</th><th>Herramienta</th><th>US$/pág</th></tr></thead>
+        <tbody>
+          <tr><td>Campo con etiqueta conocida</td><td>Queries / FORMS</td><td>0.015 / 0.05</td></tr>
+          <tr><td>Tabla</td><td>TABLES</td><td>0.015</td></tr>
+          <tr><td>Checkbox</td><td>SELECTION_ELEMENT (FORMS)</td><td>0.05</td></tr>
+          <tr><td>Prosa, pregunta en español, normalizar, explicar</td><td>LLM sobre texto linealizado</td><td>≈ 0.003 (confirmar)</td></tr>
+          <tr><td>Muchos tipos con esquema propio, sin código</td><td>Bedrock Data Automation</td><td>≈ 0.01–0.04 (confirmar)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <p class="destacado">Una respuesta <strong>incorrecta con 99 % de confianza</strong> es peor que no responder. OCR determinista primero; LLM solo donde aporta; <strong>el LLM tampoco decide solo</strong>. <span class="suave">Tarifa Oregón, aprox.</span></p>
+  <aside class="notas">
+    <p><strong>Duración:</strong> 2 min (min 61–63).</p>
+    <p><strong>Qué decir (dato real, no lo suavices):</strong> esperábamos que sobre una carta en prosa las tres queries se quedaran vacías. No pasó eso. <code>PROVEEDOR</code> devolvió "Gerente de Compras" con 60 % — es el cargo de quien firma la carta, María José Cabrera, y encima del lado del comprador, no del proveedor (Tecnología Andina Ejemplo S.A.). <code>CANT_MONITORES</code> devolvió "27" con <strong>99 %</strong> — 27 son las pulgadas del monitor; la cantidad es 3. Solo <code>TOTAL_COMPRA</code> se abstuvo, y correctamente, porque el total 1221.20 no está escrito: hay que calcularlo.</p>
+    <p><strong>El titular:</strong> sobre prosa Queries no dice "no sé"; responde con seguridad y se equivoca. Esa combinación — incorrecto y 99 % de confianza — es el mejor argumento del taller para dos cosas: (a) cuándo hace falta un LLM, y (b) por qué el LLM tampoco decide solo y todo pasa por los validadores.</p>
+    <p><strong>Qué mostrar:</strong> el fixture <code>fixtures/orden_compra_prosa/analyze_document__QUERIES__*.json</code> con las respuestas y su confianza, y <code>fixtures/bedrock/orden_compra_prosa__haiku.json</code> con request, respuesta y usage.</p>
+    <p><strong>Advertencia que va aquí:</strong> una "corrección" del LLM puede pasar el módulo 11 y aun así ser falsa; por eso toda corrección se etiqueta como alerta para un revisor humano.</p>
+  </aside>
+</section>
+
+<!-- ================================================================ 16 -->
+<section class="slide" data-min="63" aria-label="Slide 16">
+  <h2><span class="kicker">Min 63</span>Textract hoy (sep-2026) frente a BDA y LLM multimodal</h2>
+  <div class="tabla">
+    <table>
+      <thead><tr><th></th><th>Textract</th><th>Bedrock Data Automation</th><th>LLM multimodal</th></tr></thead>
+      <tbody>
+        <tr><td>US$/pág</td><td>0.0015 texto · 0.065 forms+tables</td><td>≈ 0.01 estándar · 0.04 custom (confirmar)</td><td>≈ 0.003–0.01 según tokens (confirmar)</td></tr>
+        <tr><td>Determinista</td><td class="ok">sí</td><td class="medio">parcial</td><td class="bajo">no</td></tr>
+        <tr><td>Geometría + confianza por palabra</td><td class="ok">sí</td><td class="medio">por campo (confirmar)</td><td class="bajo">no</td></tr>
+        <tr><td>Español impreso / manuscrito</td><td>sí / solo inglés</td><td>sí / sí (confirmar)</td><td>sí / sí</td></tr>
+        <tr><td>Alucinación</td><td class="ok">no</td><td class="medio">posible</td><td class="bajo">posible</td></tr>
+        <tr><td>Cuándo</td><td>campos etiquetados, tablas, checkboxes</td><td>muchos tipos, esquema propio, sin código</td><td>prosa, ambigüedad, explicación</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="mini">Textract: sin anuncio de mantenimiento al 2-sep-2026 (confirmar); última mejora del modelo jun-2025 (0 vs O, texto rotado). A2I sí está en mantenimiento. AWS recomienda BDA "para la mayoría de casos" de IDP y Textract + LLM para lógica propia. Ni Textract ni BDA están en sa-east-1. Tarifa Oregón, aprox.</p>
+  <aside class="notas">
+    <p><strong>Duración:</strong> máximo 2 min (min 63–64); no abrir debate.</p>
+    <p><strong>Respuesta preparada a "¿por qué me enseñas Textract y no un LLM multimodal?":</strong> OCR barato (US$ 0.0015/pág texto), determinista, con geometría y confianza por palabra, español impreso soportado; y la capa propia que construimos hoy (Campo, validadores, ETAPAS) se alimenta igual de BDA o de un LLM mañana sin reescribir nada.</p>
+  </aside>
+</section>
+
+<!-- ================================================================ 17 -->
+<section class="slide" data-min="64" aria-label="Slide 17">
+  <h2><span class="kicker">Cierre · min 64</span>Costo real, seguridad y tarea para casa</h2>
+  <div class="col2">
+    <div>
+      <pre class="term"><span class="p">$</span> python3 00_check.py   <span class="cm"># costo acumulado de la sesión</span>
+<span class="p">$</span> cat cache/.costos.json   <span class="cm"># {"llamadas": 8, "usd": 0.23}</span></pre>
+      <p style="margin-top:.6em"><span class="cifra">≈ US$ 0.23</span> <span class="suave">por persona en online · US$ 0 en offline (tarifa Oregón, aprox.)</span></p>
+      <p class="mini">Dato real: grabar los fixtures de los 6 documentos costó <strong>US$ 0.3955 en 16 llamadas</strong> (us-east-1, 4-sep-2026). Todo el taller corre sobre esas respuestas, sin gastar un centavo más.</p>
+      <p class="destacado" style="margin-top:.6em"><strong>Borra ahora</strong> las claves temporales que hayas creado. Free tier: 100 págs/mes de AnalyzeDocument en cuentas nuevas.</p>
+    </div>
+    <div>
+      <p class="acento" style="font-weight:600">Tarea para casa</p>
+      <ul>
+        <li><code>extra/06_expense.py</code> — AnalyzeExpense (solo inglés oficial)</li>
+        <li><code>extra/07_async_s3.py</code> — Start/Get con S3 en us-east-1 y NextToken</li>
+        <li><code>extra/08_textractor.py</code> — textractor 1.10: to_pandas, to_markdown</li>
+        <li><code>bonus/README.md</code> — habilitar Bedrock en tu cuenta</li>
+        <li><code>pytest tests/</code> — corre 100 % offline</li>
+      </ul>
+    </div>
+  </div>
+  <aside class="notas">
+    <p><strong>Duración:</strong> 3 min (min 64–67).</p>
+    <p><strong>Qué decir:</strong> insistir en borrar claves y en el presupuesto (AWS Budgets se actualiza cada 8-12 h: no frena gasto en tiempo real). Recordar los límites honestos en una frase: sync 1 pág / 10 MB; queries, manuscrito y expense solo inglés; AnalyzeID no sirve para cédulas.</p>
+    <p><strong>Qué hacer:</strong> mostrar el costo real de la sesión en pantalla; última llamada al QR; repartir el cheat sheet impreso.</p>
+    <p><strong>Ojo con tu propio <code>cache/.costos.json</code>:</strong> en tu laptop acumula lo del ensayo, así que puede imprimir <code>$0.3955 (aprox.)</code> con 16 llamadas — es exactamente lo que costó grabar los fixtures reales. No lo escondas: dilo como dato, "el taller entero costó menos de 40 centavos".</p>
+  </aside>
+</section>
+
+<!-- ================================================================ 18 -->
+<section class="slide portada" data-min="67" aria-label="Slide 18: cierre">
+  <div class="arriba">
+    <div>
+      <h1><span class="kicker">Gracias</span>Preguntas</h1>
+      <p class="evento" style="font-size:.95em;margin-top:.6em">Manuel Josue · AWS User Group Ecuador · &lt;CONTACTO-PONENTE&gt;</p>
+      <p class="urlcorta" style="margin-top:.5em">&lt;URL-CORTA&gt;</p>
+      <p class="suave" style="margin-top:.6em">Las preguntas largas, en el pasillo. El auditorio se necesita a las 16:10.</p>
+    </div>
+    <div class="qr" role="img" aria-label="Marcador para el código QR del repositorio" style="justify-self:end">QR →<br>github.com/jossuema/textract-ec</div>
+  </div>
+  <aside class="notas">
+    <p><strong>Duración:</strong> 3 min (min 67–70): 2-3 preguntas cortas.</p>
+    <p><strong>Qué hacer:</strong> invitar a continuar en el pasillo y en el canal del AWS User Group Ecuador. Recoger la factura impresa y los cheat sheets sobrantes. Cerrar CloudShell.</p>
+    <p><strong>Pendiente:</strong> reemplazar QR, <code>&lt;URL-CORTA&gt;</code> y <code>&lt;CONTACTO-PONENTE&gt;</code>.</p>
+  </aside>
+</section>
+
+</main>
+
+<footer class="pie" aria-label="Pie del deck">
+  <span>Textract EC · AWS CD Ecuador 2026</span>
+  <span class="sep">·</span>
+  <span id="pieNumero" aria-live="polite">1 / 18</span>
+  <span class="sep">·</span>
+  <span class="min" id="pieMinuto">min 0</span>
+  <div class="ctrl">
+    <button type="button" id="btnPrev" aria-label="Slide anterior">←</button>
+    <button type="button" id="btnNext" aria-label="Slide siguiente">→</button>
+    <button type="button" id="btnNotas" aria-pressed="false" aria-label="Mostrar u ocultar notas del ponente (tecla N)">N notas</button>
+    <button type="button" id="btnAyuda" aria-label="Ayuda de teclado (tecla ?)">?</button>
+  </div>
+</footer>
+
+<div class="panel-notas" id="panelNotas" role="region" aria-live="polite" aria-label="Notas del ponente" hidden>
+  <h3 id="panelTitulo">Notas del ponente</h3>
+  <div id="panelCuerpo"></div>
+</div>
+
+<div class="ayuda" id="ayuda" role="dialog" aria-modal="true" aria-label="Ayuda de teclado" hidden>
+  <div>
+    <h3>Atajos</h3>
+    <p><kbd>→</kbd> <kbd>Espacio</kbd> <kbd>PageDown</kbd> siguiente · <kbd>←</kbd> <kbd>PageUp</kbd> anterior</p>
+    <p><kbd>Home</kbd> primera · <kbd>End</kbd> última · clic en mitad derecha / izquierda</p>
+    <p><kbd>N</kbd> notas del ponente · <kbd>F</kbd> pantalla completa · <kbd>?</kbd> esta ayuda · <kbd>Esc</kbd> cerrar</p>
+    <p>URL <code>#/7</code> abre la slide 7. Imprimir: una slide por página; con <code>?notas=1</code> se imprimen las notas.</p>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var slides = Array.prototype.slice.call(document.querySelectorAll('section.slide'));
+  var total = slides.length;
+  var actual = -1;
+  var panel = document.getElementById('panelNotas');
+  var panelCuerpo = document.getElementById('panelCuerpo');
+  var panelTitulo = document.getElementById('panelTitulo');
+  var ayuda = document.getElementById('ayuda');
+  var pieNumero = document.getElementById('pieNumero');
+  var pieMinuto = document.getElementById('pieMinuto');
+  var progreso = document.getElementById('progreso');
+  var btnNotas = document.getElementById('btnNotas');
+  var deck = document.getElementById('deck');
+
+  // ?notas=1 → las notas se imprimen al pie de cada slide
+  try {
+    if (/[?&]notas=1/.test(location.search)) { document.body.classList.add('imprimir-notas'); }
+  } catch (e) { /* sin body accesible: se ignora */ }
+
+  function desdeHash() {
+    var m = (location.hash || '').match(/^#\/(\d+)/);
+    if (!m) { return 0; }
+    var n = parseInt(m[1], 10);
+    if (isNaN(n)) { return 0; }
+    return Math.min(total, Math.max(1, n)) - 1;
+  }
+
+  function pintarNotas() {
+    var aside = slides[actual].querySelector('aside.notas');
+    panelTitulo.textContent = 'Notas del ponente · slide ' + (actual + 1) + ' de ' + total;
+    panelCuerpo.innerHTML = aside ? aside.innerHTML : '<p>(sin notas)</p>';
+  }
+
+  function ir(n, sinHash) {
+    n = Math.min(total - 1, Math.max(0, n));
+    if (n === actual) { return; }
+    actual = n;
+    slides.forEach(function (s, i) {
+      var activa = i === n;
+      s.classList.toggle('activa', activa);
+      s.setAttribute('aria-hidden', activa ? 'false' : 'true');
+    });
+    pieNumero.textContent = (n + 1) + ' / ' + total;
+    pieMinuto.textContent = 'min ' + (slides[n].getAttribute('data-min') || '0');
+    progreso.style.width = ((n + 1) / total * 100) + '%';
+    if (!sinHash) {
+      var h = '#/' + (n + 1);
+      if (location.hash !== h) {
+        try { history.replaceState(null, '', h); } catch (e) { location.hash = h; }
+      }
+    }
+    if (!panel.hidden) { pintarNotas(); }
+    document.title = 'Textract EC · ' + (n + 1) + '/' + total;
+  }
+
+  function alternarNotas() {
+    panel.hidden = !panel.hidden;
+    btnNotas.setAttribute('aria-pressed', panel.hidden ? 'false' : 'true');
+    if (!panel.hidden) { pintarNotas(); }
+  }
+
+  function alternarAyuda(forzarCerrar) {
+    ayuda.hidden = forzarCerrar ? true : !ayuda.hidden;
+  }
+
+  function pantallaCompleta() {
+    var el = document.documentElement;
+    try {
+      if (document.fullscreenElement) { document.exitFullscreen(); }
+      else if (el.requestFullscreen) { el.requestFullscreen(); }
+    } catch (e) { /* navegador sin fullscreen: se ignora */ }
+  }
+
+  document.addEventListener('keydown', function (ev) {
+    if (ev.altKey || ev.ctrlKey || ev.metaKey) { return; }
+    var k = ev.key;
+    if (!ayuda.hidden && k !== '?' && k !== 'Escape') { return; }
+    switch (k) {
+      case 'ArrowRight': case 'ArrowDown': case ' ': case 'PageDown': case 'Spacebar':
+        ir(actual + 1); ev.preventDefault(); break;
+      case 'ArrowLeft': case 'ArrowUp': case 'PageUp': case 'Backspace':
+        ir(actual - 1); ev.preventDefault(); break;
+      case 'Home': ir(0); ev.preventDefault(); break;
+      case 'End': ir(total - 1); ev.preventDefault(); break;
+      case 'n': case 'N': alternarNotas(); ev.preventDefault(); break;
+      case 'f': case 'F': pantallaCompleta(); ev.preventDefault(); break;
+      case '?': alternarAyuda(); ev.preventDefault(); break;
+      case 'Escape': alternarAyuda(true); break;
+      default: break;
+    }
+  });
+
+  deck.addEventListener('click', function (ev) {
+    var t = ev.target;
+    if (t.closest && t.closest('a, button, input, textarea, select, pre, .tabla')) { return; }
+    var mitad = window.innerWidth / 2;
+    ir(ev.clientX < mitad ? actual - 1 : actual + 1);
+  });
+
+  document.getElementById('btnPrev').addEventListener('click', function () { ir(actual - 1); });
+  document.getElementById('btnNext').addEventListener('click', function () { ir(actual + 1); });
+  btnNotas.addEventListener('click', alternarNotas);
+  document.getElementById('btnAyuda').addEventListener('click', function () { alternarAyuda(); });
+  ayuda.addEventListener('click', function (ev) { if (ev.target === ayuda) { alternarAyuda(true); } });
+
+  window.addEventListener('hashchange', function () { ir(desdeHash(), true); });
+
+  ir(desdeHash());
+  if (!location.hash) { try { history.replaceState(null, '', '#/1'); } catch (e) { /* ignorar */ } }
+})();
+</script>

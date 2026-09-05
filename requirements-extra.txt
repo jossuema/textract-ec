@@ -1,0 +1,4 @@
+# Opcionales: nada del camino obligatorio depende de esto.
+pillow          # overlay de cajas por confianza (01_texto.py --overlay)
+rich            # tablas bonitas si está instalado (los scripts funcionan sin él)
+amazon-textract-textractor[pandas]   # extra/08_textractor.py (to_pandas, to_markdown)

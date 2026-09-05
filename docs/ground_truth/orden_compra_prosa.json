@@ -1,0 +1,77 @@
+{
+  "documento": "orden_compra_prosa",
+  "archivo": "docs/orden_compra_prosa.png",
+  "tipo_documento": "desconocido",
+  "tipo_real": "orden de compra en prosa",
+  "proveedor": "Tecnología Andina Ejemplo S.A.",
+  "comprador": "Andina Datos Ejemplo",
+  "fecha_carta": "2026-08-28",
+  "fecha_entrega": "2026-09-10",
+  "lugar_entrega": "Calle Larga 4-56, Cuenca",
+  "items": [
+    {
+      "descripcion": "Monitor de 27 pulgadas",
+      "cantidad": 3,
+      "precio_unitario": 350.0,
+      "total": 1050.0
+    },
+    {
+      "descripcion": "Teclado mecánico",
+      "cantidad": 2,
+      "precio_unitario": 85.6,
+      "total": 171.2
+    }
+  ],
+  "monitores": 3,
+  "teclados": 2,
+  "total": 1221.2,
+  "moneda": "USD",
+  "forma_pago": "transferencia bancaria a la recepción de la factura",
+  "firmante": {
+    "nombre": "María José Cabrera",
+    "cargo": "Gerente de Compras"
+  },
+  "campos_esperados": {
+    "PROVEEDOR": "Tecnología Andina Ejemplo S.A.",
+    "TOTAL_COMPRA": "1221.20",
+    "CANT_MONITORES": "3"
+  },
+  "queries_esperadas_sin_respuesta": [
+    "TOTAL_COMPRA"
+  ],
+  "queries_textract_reales": {
+    "_nota": "Lo que Textract Queries DEVUELVE de verdad sobre esta carta en prosa (fixtures grabados el 2026-09-04, us-east-1). No es lo correcto: es lo observado. Compáralo con campos_esperados, que sí es la verdad del documento.",
+    "PROVEEDOR": {
+      "valor": "Gerente de Compras",
+      "confianza": 60.0,
+      "correcto": false,
+      "por_que_falla": "devuelve el CARGO de quien firma la carta (María José Cabrera, del comprador) en vez del proveedor, Tecnología Andina Ejemplo S.A."
+    },
+    "TOTAL_COMPRA": {
+      "valor": "",
+      "confianza": 0.0,
+      "correcto": true,
+      "por_que_falla": "no responde, y hace bien: el total 1221.20 no está escrito en ninguna parte, hay que calcularlo (3 × 350.00 + 2 × 85.60)"
+    },
+    "CANT_MONITORES": {
+      "valor": "27",
+      "confianza": 99.0,
+      "correcto": false,
+      "por_que_falla": "27 son las PULGADAS del monitor, no la cantidad, que es 3; y lo afirma con 99 % de confianza"
+    }
+  },
+  "desajustes_intencionales": {
+    "_nota": "tools/evaluar.py marcará ✘ estas dos filas A PROPÓSITO: el ground truth guarda la VERDAD del documento, no lo que el OCR contestó. Esas dos ✘ son el resultado que se enseña en el bonus, no un fallo del kit.",
+    "filas": [
+      "PROVEEDOR: esperado 'Tecnología Andina Ejemplo S.A.' · obtenido 'Gerente de Compras' (Queries, 60.0)",
+      "CANT_MONITORES: esperado '3' · obtenido '27' (Queries, 99.0)"
+    ],
+    "leccion": "Sobre prosa, Queries no dice «no sé»: responde con seguridad y se equivoca. Una respuesta incorrecta con 99 % de confianza es el mejor argumento del taller para (a) cuándo hace falta un LLM y (b) por qué el LLM tampoco decide solo: su JSON vuelve a pasar por los validadores.",
+    "contraste_con_bedrock": "En la misma tabla, `python3 tools/evaluar.py orden_compra_prosa --bedrock` compara estos mismos 3 alias contra la salida del LLM: ahí sí salen 3/3. Por eso campos_esperados guarda la verdad y no la respuesta de Queries.",
+    "campos": [
+      "PROVEEDOR",
+      "CANT_MONITORES"
+    ]
+  },
+  "texto": "Cuenca, 28 de agosto de 2026. Estimados señores de Tecnología Andina Ejemplo S.A.: Por medio de la presente confirmamos la compra de tres monitores de 27 pulgadas a un precio de 350 dólares cada uno, más dos teclados mecánicos a 85.60 dólares por unidad. Solicitamos la entrega en nuestras oficinas de la Calle Larga 4-56 antes del 10 de septiembre. El pago se realizará por transferencia bancaria a la recepción de la factura. Atentamente, María José Cabrera Gerente de Compras Andina Datos Ejemplo"
+}

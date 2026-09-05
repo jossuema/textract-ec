@@ -1,0 +1,335 @@
+{
+  "documento": "docs/factura_trampa.png",
+  "tipo_documento": "factura",
+  "campos": {
+    "RUC_EMISOR": {
+      "valor": "1790456129001",
+      "confianza": 99.0,
+      "origen": "QUERIES"
+    },
+    "NUM_FACTURA": {
+      "valor": "001-001-000001234",
+      "confianza": 97.0,
+      "origen": "QUERIES"
+    },
+    "CLAVE_ACCESO": {
+      "valor": "0109202601179045612900120010010000012341234567814",
+      "confianza": 95.0007553100586,
+      "origen": "FORMS"
+    },
+    "FECHA_EMISION": {
+      "valor": "2026-09-01",
+      "confianza": 98.0,
+      "origen": "QUERIES"
+    },
+    "SUBTOTAL_15": {
+      "valor": "821.60",
+      "confianza": 96.0,
+      "origen": "QUERIES"
+    },
+    "SUBTOTAL_SIN_IMPUESTOS": {
+      "valor": "821.60",
+      "confianza": 95.07444763183594,
+      "origen": "FORMS"
+    },
+    "IVA_15": {
+      "valor": "123.24",
+      "confianza": 99.0,
+      "origen": "QUERIES"
+    },
+    "PROPINA": {
+      "valor": "0.00",
+      "confianza": 94.67681121826172,
+      "origen": "FORMS"
+    },
+    "VALOR_TOTAL": {
+      "valor": "944.84",
+      "confianza": 98.0,
+      "origen": "QUERIES"
+    }
+  },
+  "tablas": [
+    {
+      "filas": [
+        [
+          "Cant.",
+          "Descripción",
+          "Precio Unitario",
+          "Descuento",
+          "Precio Total"
+        ],
+        [
+          "2",
+          "Monitor 27\" 4K Ejemplo",
+          "350.00",
+          "0.00",
+          "700.00"
+        ],
+        [
+          "1",
+          "Teclado mecánico ES",
+          "85.60",
+          "0.00",
+          "95.60"
+        ],
+        [
+          "3",
+          "Cable HDMI 2.1 2m",
+          "12.00",
+          "0.00",
+          "36.00"
+        ]
+      ],
+      "confianza": 90.62,
+      "titulo": ""
+    },
+    {
+      "filas": [
+        [
+          "SUBTOTAL 15%",
+          "821.60"
+        ],
+        [
+          "SUBTOTAL 0%",
+          "0.00"
+        ],
+        [
+          "SUBTOTAL NO OBJETO DE IVA",
+          "0.00"
+        ],
+        [
+          "SUBTOTAL EXENTO DE IVA",
+          "0.00"
+        ],
+        [
+          "SUBTOTAL SIN IMPUESTOS",
+          "821.60"
+        ],
+        [
+          "TOTAL DESCUENTO",
+          "0.00"
+        ],
+        [
+          "ICE",
+          "0.00"
+        ],
+        [
+          "IVA 15%",
+          "123.24"
+        ],
+        [
+          "PROPINA",
+          "0.00"
+        ],
+        [
+          "VALOR TOTAL",
+          "944.84"
+        ]
+      ],
+      "confianza": 90.97,
+      "titulo": ""
+    },
+    {
+      "filas": [
+        [
+          "Forma de Pago",
+          "Valor"
+        ],
+        [
+          "TARJETA DE CRÉDITO",
+          "944.84"
+        ]
+      ],
+      "confianza": 91.72,
+      "titulo": "Información Adicional"
+    }
+  ],
+  "alertas": [
+    "clave de acceso con dígito verificador inválido (esperado 3, leído 4)",
+    "ítems no suman el subtotal: ítems 831.60 vs SUBTOTAL 821.60"
+  ],
+  "estado": "REVISAR",
+  "paginas": 1,
+  "costo_usd": 0.0,
+  "modo": "offline",
+  "extra": {
+    "generado": "2026-09-04T19:09:25",
+    "script": "03_inteligente.py",
+    "respuestas_queries": {
+      "RUC_EMISOR": {
+        "valor": "1790456129001",
+        "confianza": 99.0,
+        "origen": "QUERIES"
+      },
+      "NUM_FACTURA": {
+        "valor": "001-001-000001234",
+        "confianza": 97.0,
+        "origen": "QUERIES"
+      },
+      "CLAVE_ACCESO": {
+        "valor": "0109202601179045612900120010010000012341234567814",
+        "confianza": 82.0,
+        "origen": "QUERIES"
+      },
+      "FECHA_EMISION": {
+        "valor": "01/09/2026",
+        "confianza": 98.0,
+        "origen": "QUERIES"
+      },
+      "SUBTOTAL_15": {
+        "valor": "821.60",
+        "confianza": 96.0,
+        "origen": "QUERIES"
+      },
+      "IVA_15": {
+        "valor": "123.24",
+        "confianza": 99.0,
+        "origen": "QUERIES"
+      },
+      "VALOR_TOTAL": {
+        "valor": "944.84",
+        "confianza": 98.0,
+        "origen": "QUERIES"
+      }
+    },
+    "fuentes": {
+      "RUC_EMISOR": [
+        {
+          "valor": "1790456129001",
+          "confianza": 99.0,
+          "origen": "QUERIES"
+        },
+        {
+          "valor": "1790456129001",
+          "confianza": 93.88379669189453,
+          "origen": "FORMS"
+        }
+      ],
+      "NUM_FACTURA": [
+        {
+          "valor": "001-001-000001234",
+          "confianza": 97.0,
+          "origen": "QUERIES"
+        },
+        {
+          "valor": "001-001-000001234",
+          "confianza": 93.98575592041016,
+          "origen": "FORMS"
+        }
+      ],
+      "CLAVE_ACCESO": [
+        {
+          "valor": "0109202601179045612900120010010000012341234567814",
+          "confianza": 82.0,
+          "origen": "QUERIES"
+        },
+        {
+          "valor": "0109202601179045612900120010010000012341234567814",
+          "confianza": 95.0007553100586,
+          "origen": "FORMS"
+        }
+      ],
+      "FECHA_EMISION": [
+        {
+          "valor": "01/09/2026",
+          "confianza": 98.0,
+          "origen": "QUERIES"
+        },
+        {
+          "valor": "01/09/2026",
+          "confianza": 95.21817779541016,
+          "origen": "FORMS"
+        }
+      ],
+      "SUBTOTAL_15": [
+        {
+          "valor": "821.60",
+          "confianza": 96.0,
+          "origen": "QUERIES"
+        },
+        {
+          "valor": "821.60",
+          "confianza": 87.77997589111328,
+          "origen": "FORMS"
+        },
+        {
+          "valor": "821.60",
+          "confianza": 90.97,
+          "origen": "TABLES"
+        }
+      ],
+      "SUBTOTAL_SIN_IMPUESTOS": [
+        {
+          "valor": "821.60",
+          "confianza": 95.07444763183594,
+          "origen": "FORMS"
+        },
+        {
+          "valor": "821.60",
+          "confianza": 90.97,
+          "origen": "TABLES"
+        }
+      ],
+      "IVA_15": [
+        {
+          "valor": "123.24",
+          "confianza": 99.0,
+          "origen": "QUERIES"
+        },
+        {
+          "valor": "123.24",
+          "confianza": 92.95347595214844,
+          "origen": "FORMS"
+        },
+        {
+          "valor": "123.24",
+          "confianza": 90.97,
+          "origen": "TABLES"
+        }
+      ],
+      "PROPINA": [
+        {
+          "valor": "0.00",
+          "confianza": 94.67681121826172,
+          "origen": "FORMS"
+        },
+        {
+          "valor": "0.00",
+          "confianza": 90.97,
+          "origen": "TABLES"
+        }
+      ],
+      "VALOR_TOTAL": [
+        {
+          "valor": "944.84",
+          "confianza": 98.0,
+          "origen": "QUERIES"
+        },
+        {
+          "valor": "944.84",
+          "confianza": 95.15243530273438,
+          "origen": "FORMS"
+        },
+        {
+          "valor": "944.84",
+          "confianza": 90.97,
+          "origen": "TABLES"
+        }
+      ]
+    },
+    "llamadas": [
+      {
+        "clave": "factura_trampa/analyze_document__FORMS_LAYOUT_TABLES",
+        "origen": "fixture",
+        "costo_usd": 0.0,
+        "paginas": 1
+      },
+      {
+        "clave": "factura_trampa/analyze_document__QUERIES__20ea4aeb",
+        "origen": "fixture",
+        "costo_usd": 0.0,
+        "paginas": 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,1376 @@
+{
+ "documento": "recibo_restaurante",
+ "archivo": "docs/extra/recibo_restaurante.png",
+ "ancho": 1100,
+ "alto": 1700,
+ "dpi": 300,
+ "rotacion_grados": 0.0,
+ "nota": "Geometría en píxeles [x0, y0, x1, y1]; bbox de cada palabra calculado con font.getlength/getbbox al dibujar.",
+ "elementos": [
+  {
+   "id": "e1",
+   "rol": "titulo",
+   "texto": "EL CANGREJO SABROSO EJEMPLO",
+   "bbox": [
+    179,
+    88,
+    921,
+    126
+   ],
+   "palabras": [
+    {
+     "texto": "EL",
+     "bbox": [
+      179,
+      89,
+      231,
+      118
+     ]
+    },
+    {
+     "texto": "CANGREJO",
+     "bbox": [
+      245,
+      88,
+      478,
+      126
+     ]
+    },
+    {
+     "texto": "SABROSO",
+     "bbox": [
+      492,
+      88,
+      710,
+      118
+     ]
+    },
+    {
+     "texto": "EJEMPLO",
+     "bbox": [
+      724,
+      88,
+      921,
+      126
+     ]
+    }
+   ],
+   "linea": "e1"
+  },
+  {
+   "id": "e2",
+   "rol": "linea",
+   "texto": "Mariscos y comida típica",
+   "bbox": [
+    377,
+    154,
+    723,
+    182
+   ],
+   "palabras": [
+    {
+     "texto": "Mariscos",
+     "bbox": [
+      377,
+      155,
+      500,
+      176
+     ]
+    },
+    {
+     "texto": "y",
+     "bbox": [
+      509,
+      161,
+      526,
+      182
+     ]
+    },
+    {
+     "texto": "comida",
+     "bbox": [
+      535,
+      155,
+      637,
+      176
+     ]
+    },
+    {
+     "texto": "típica",
+     "bbox": [
+      646,
+      154,
+      723,
+      182
+     ]
+    }
+   ],
+   "linea": "e2"
+  },
+  {
+   "id": "e5",
+   "rol": "clave",
+   "texto": "RUC:",
+   "bbox": [
+    80,
+    236,
+    154,
+    258
+   ],
+   "palabras": [
+    {
+     "texto": "RUC:",
+     "bbox": [
+      80,
+      236,
+      154,
+      258
+     ]
+    }
+   ],
+   "linea": "L4",
+   "par": "P3"
+  },
+  {
+   "id": "e6",
+   "rol": "valor",
+   "texto": "0990123454001",
+   "bbox": [
+    174,
+    236,
+    421,
+    258
+   ],
+   "palabras": [
+    {
+     "texto": "0990123454001",
+     "bbox": [
+      174,
+      236,
+      421,
+      258
+     ]
+    }
+   ],
+   "linea": "L4",
+   "par": "P3"
+  },
+  {
+   "id": "e7",
+   "rol": "linea",
+   "texto": "Av. Francisco de Orellana 123, Guayaquil",
+   "bbox": [
+    80,
+    285,
+    663,
+    312
+   ],
+   "palabras": [
+    {
+     "texto": "Av.",
+     "bbox": [
+      80,
+      286,
+      125,
+      306
+     ]
+    },
+    {
+     "texto": "Francisco",
+     "bbox": [
+      134,
+      285,
+      267,
+      306
+     ]
+    },
+    {
+     "texto": "de",
+     "bbox": [
+      276,
+      285,
+      311,
+      306
+     ]
+    },
+    {
+     "texto": "Orellana",
+     "bbox": [
+      320,
+      285,
+      439,
+      306
+     ]
+    },
+    {
+     "texto": "123,",
+     "bbox": [
+      448,
+      286,
+      511,
+      310
+     ]
+    },
+    {
+     "texto": "Guayaquil",
+     "bbox": [
+      520,
+      285,
+      663,
+      312
+     ]
+    }
+   ],
+   "linea": "e7"
+  },
+  {
+   "id": "e10",
+   "rol": "clave",
+   "texto": "NOTA DE VENTA No.",
+   "bbox": [
+    80,
+    376,
+    419,
+    398
+   ],
+   "palabras": [
+    {
+     "texto": "NOTA",
+     "bbox": [
+      80,
+      376,
+      175,
+      398
+     ]
+    },
+    {
+     "texto": "DE",
+     "bbox": [
+      184,
+      376,
+      230,
+      398
+     ]
+    },
+    {
+     "texto": "VENTA",
+     "bbox": [
+      240,
+      376,
+      353,
+      398
+     ]
+    },
+    {
+     "texto": "No.",
+     "bbox": [
+      362,
+      376,
+      419,
+      398
+     ]
+    }
+   ],
+   "linea": "L9",
+   "par": "P8"
+  },
+  {
+   "id": "e11",
+   "rol": "valor",
+   "texto": "002-001-000004567",
+   "bbox": [
+    439,
+    376,
+    746,
+    398
+   ],
+   "palabras": [
+    {
+     "texto": "002-001-000004567",
+     "bbox": [
+      439,
+      376,
+      746,
+      398
+     ]
+    }
+   ],
+   "linea": "L9",
+   "par": "P8"
+  },
+  {
+   "id": "e14",
+   "rol": "clave",
+   "texto": "Fecha:",
+   "bbox": [
+    80,
+    430,
+    179,
+    453
+   ],
+   "palabras": [
+    {
+     "texto": "Fecha:",
+     "bbox": [
+      80,
+      430,
+      179,
+      453
+     ]
+    }
+   ],
+   "linea": "L13",
+   "par": "P12"
+  },
+  {
+   "id": "e15",
+   "rol": "valor",
+   "texto": "02/09/2026 20:35",
+   "bbox": [
+    199,
+    431,
+    467,
+    456
+   ],
+   "palabras": [
+    {
+     "texto": "02/09/2026",
+     "bbox": [
+      199,
+      431,
+      371,
+      456
+     ]
+    },
+    {
+     "texto": "20:35",
+     "bbox": [
+      381,
+      431,
+      467,
+      453
+     ]
+    }
+   ],
+   "linea": "L13",
+   "par": "P12"
+  },
+  {
+   "id": "e18",
+   "rol": "clave",
+   "texto": "Mesa:",
+   "bbox": [
+    80,
+    486,
+    168,
+    508
+   ],
+   "palabras": [
+    {
+     "texto": "Mesa:",
+     "bbox": [
+      80,
+      486,
+      168,
+      508
+     ]
+    }
+   ],
+   "linea": "L17",
+   "par": "P16"
+  },
+  {
+   "id": "e19",
+   "rol": "valor",
+   "texto": "7",
+   "bbox": [
+    188,
+    486,
+    207,
+    508
+   ],
+   "palabras": [
+    {
+     "texto": "7",
+     "bbox": [
+      188,
+      486,
+      207,
+      508
+     ]
+    }
+   ],
+   "linea": "L17",
+   "par": "P16"
+  },
+  {
+   "id": "e20",
+   "rol": "celda",
+   "texto": "Cant.",
+   "bbox": [
+    63,
+    572,
+    147,
+    592
+   ],
+   "palabras": [
+    {
+     "texto": "Cant.",
+     "bbox": [
+      63,
+      572,
+      147,
+      592
+     ]
+    }
+   ],
+   "linea": "e20",
+   "tabla": "T_ITEMS",
+   "fila": 1,
+   "col": 1,
+   "cabecera": true,
+   "celda_bbox": [
+    40,
+    550,
+    170,
+    614
+   ]
+  },
+  {
+   "id": "e21",
+   "rol": "celda",
+   "texto": "Descripción",
+   "bbox": [
+    184,
+    570,
+    370,
+    598
+   ],
+   "palabras": [
+    {
+     "texto": "Descripción",
+     "bbox": [
+      184,
+      570,
+      370,
+      598
+     ]
+    }
+   ],
+   "linea": "e21",
+   "tabla": "T_ITEMS",
+   "fila": 1,
+   "col": 2,
+   "cabecera": true,
+   "celda_bbox": [
+    170,
+    550,
+    690,
+    614
+   ]
+  },
+  {
+   "id": "e22",
+   "rol": "celda",
+   "texto": "P. Unit.",
+   "bbox": [
+    737,
+    571,
+    856,
+    592
+   ],
+   "palabras": [
+    {
+     "texto": "P.",
+     "bbox": [
+      737,
+      572,
+      769,
+      592
+     ]
+    },
+    {
+     "texto": "Unit.",
+     "bbox": [
+      779,
+      571,
+      856,
+      592
+     ]
+    }
+   ],
+   "linea": "e22",
+   "tabla": "T_ITEMS",
+   "fila": 1,
+   "col": 3,
+   "cabecera": true,
+   "celda_bbox": [
+    690,
+    550,
+    870,
+    614
+   ]
+  },
+  {
+   "id": "e23",
+   "rol": "celda",
+   "texto": "Total",
+   "bbox": [
+    966,
+    571,
+    1046,
+    592
+   ],
+   "palabras": [
+    {
+     "texto": "Total",
+     "bbox": [
+      966,
+      571,
+      1046,
+      592
+     ]
+    }
+   ],
+   "linea": "e23",
+   "tabla": "T_ITEMS",
+   "fila": 1,
+   "col": 4,
+   "cabecera": true,
+   "celda_bbox": [
+    870,
+    550,
+    1060,
+    614
+   ]
+  },
+  {
+   "id": "e24",
+   "rol": "celda",
+   "texto": "2",
+   "bbox": [
+    96,
+    636,
+    114,
+    656
+   ],
+   "palabras": [
+    {
+     "texto": "2",
+     "bbox": [
+      96,
+      636,
+      114,
+      656
+     ]
+    }
+   ],
+   "linea": "e24",
+   "tabla": "T_ITEMS",
+   "fila": 2,
+   "col": 1,
+   "cabecera": false,
+   "celda_bbox": [
+    40,
+    614,
+    170,
+    678
+   ]
+  },
+  {
+   "id": "e25",
+   "rol": "celda",
+   "texto": "Encebollado de pescado",
+   "bbox": [
+    184,
+    635,
+    525,
+    662
+   ],
+   "palabras": [
+    {
+     "texto": "Encebollado",
+     "bbox": [
+      184,
+      635,
+      355,
+      656
+     ]
+    },
+    {
+     "texto": "de",
+     "bbox": [
+      364,
+      635,
+      399,
+      656
+     ]
+    },
+    {
+     "texto": "pescado",
+     "bbox": [
+      408,
+      635,
+      525,
+      662
+     ]
+    }
+   ],
+   "linea": "e25",
+   "tabla": "T_ITEMS",
+   "fila": 2,
+   "col": 2,
+   "cabecera": false,
+   "celda_bbox": [
+    170,
+    614,
+    690,
+    678
+   ]
+  },
+  {
+   "id": "e26",
+   "rol": "celda",
+   "texto": "4.50",
+   "bbox": [
+    793,
+    636,
+    856,
+    656
+   ],
+   "palabras": [
+    {
+     "texto": "4.50",
+     "bbox": [
+      793,
+      636,
+      856,
+      656
+     ]
+    }
+   ],
+   "linea": "e26",
+   "tabla": "T_ITEMS",
+   "fila": 2,
+   "col": 3,
+   "cabecera": false,
+   "celda_bbox": [
+    690,
+    614,
+    870,
+    678
+   ]
+  },
+  {
+   "id": "e27",
+   "rol": "celda",
+   "texto": "9.00",
+   "bbox": [
+    983,
+    636,
+    1046,
+    656
+   ],
+   "palabras": [
+    {
+     "texto": "9.00",
+     "bbox": [
+      983,
+      636,
+      1046,
+      656
+     ]
+    }
+   ],
+   "linea": "e27",
+   "tabla": "T_ITEMS",
+   "fila": 2,
+   "col": 4,
+   "cabecera": false,
+   "celda_bbox": [
+    870,
+    614,
+    1060,
+    678
+   ]
+  },
+  {
+   "id": "e28",
+   "rol": "celda",
+   "texto": "1",
+   "bbox": [
+    96,
+    700,
+    114,
+    720
+   ],
+   "palabras": [
+    {
+     "texto": "1",
+     "bbox": [
+      96,
+      700,
+      114,
+      720
+     ]
+    }
+   ],
+   "linea": "e28",
+   "tabla": "T_ITEMS",
+   "fila": 3,
+   "col": 1,
+   "cabecera": false,
+   "celda_bbox": [
+    40,
+    678,
+    170,
+    742
+   ]
+  },
+  {
+   "id": "e29",
+   "rol": "celda",
+   "texto": "Cangrejada criolla",
+   "bbox": [
+    184,
+    699,
+    440,
+    726
+   ],
+   "palabras": [
+    {
+     "texto": "Cangrejada",
+     "bbox": [
+      184,
+      699,
+      346,
+      726
+     ]
+    },
+    {
+     "texto": "criolla",
+     "bbox": [
+      355,
+      699,
+      440,
+      720
+     ]
+    }
+   ],
+   "linea": "e29",
+   "tabla": "T_ITEMS",
+   "fila": 3,
+   "col": 2,
+   "cabecera": false,
+   "celda_bbox": [
+    170,
+    678,
+    690,
+    742
+   ]
+  },
+  {
+   "id": "e30",
+   "rol": "celda",
+   "texto": "18.00",
+   "bbox": [
+    775,
+    700,
+    856,
+    720
+   ],
+   "palabras": [
+    {
+     "texto": "18.00",
+     "bbox": [
+      775,
+      700,
+      856,
+      720
+     ]
+    }
+   ],
+   "linea": "e30",
+   "tabla": "T_ITEMS",
+   "fila": 3,
+   "col": 3,
+   "cabecera": false,
+   "celda_bbox": [
+    690,
+    678,
+    870,
+    742
+   ]
+  },
+  {
+   "id": "e31",
+   "rol": "celda",
+   "texto": "18.00",
+   "bbox": [
+    965,
+    700,
+    1046,
+    720
+   ],
+   "palabras": [
+    {
+     "texto": "18.00",
+     "bbox": [
+      965,
+      700,
+      1046,
+      720
+     ]
+    }
+   ],
+   "linea": "e31",
+   "tabla": "T_ITEMS",
+   "fila": 3,
+   "col": 4,
+   "cabecera": false,
+   "celda_bbox": [
+    870,
+    678,
+    1060,
+    742
+   ]
+  },
+  {
+   "id": "e32",
+   "rol": "celda",
+   "texto": "2",
+   "bbox": [
+    96,
+    764,
+    114,
+    784
+   ],
+   "palabras": [
+    {
+     "texto": "2",
+     "bbox": [
+      96,
+      764,
+      114,
+      784
+     ]
+    }
+   ],
+   "linea": "e32",
+   "tabla": "T_ITEMS",
+   "fila": 4,
+   "col": 1,
+   "cabecera": false,
+   "celda_bbox": [
+    40,
+    742,
+    170,
+    806
+   ]
+  },
+  {
+   "id": "e33",
+   "rol": "celda",
+   "texto": "Jugo de naranja",
+   "bbox": [
+    182,
+    763,
+    405,
+    790
+   ],
+   "palabras": [
+    {
+     "texto": "Jugo",
+     "bbox": [
+      182,
+      764,
+      245,
+      790
+     ]
+    },
+    {
+     "texto": "de",
+     "bbox": [
+      254,
+      763,
+      289,
+      784
+     ]
+    },
+    {
+     "texto": "naranja",
+     "bbox": [
+      298,
+      763,
+      405,
+      790
+     ]
+    }
+   ],
+   "linea": "e33",
+   "tabla": "T_ITEMS",
+   "fila": 4,
+   "col": 2,
+   "cabecera": false,
+   "celda_bbox": [
+    170,
+    742,
+    690,
+    806
+   ]
+  },
+  {
+   "id": "e34",
+   "rol": "celda",
+   "texto": "2.50",
+   "bbox": [
+    793,
+    764,
+    856,
+    784
+   ],
+   "palabras": [
+    {
+     "texto": "2.50",
+     "bbox": [
+      793,
+      764,
+      856,
+      784
+     ]
+    }
+   ],
+   "linea": "e34",
+   "tabla": "T_ITEMS",
+   "fila": 4,
+   "col": 3,
+   "cabecera": false,
+   "celda_bbox": [
+    690,
+    742,
+    870,
+    806
+   ]
+  },
+  {
+   "id": "e35",
+   "rol": "celda",
+   "texto": "5.00",
+   "bbox": [
+    983,
+    764,
+    1046,
+    784
+   ],
+   "palabras": [
+    {
+     "texto": "5.00",
+     "bbox": [
+      983,
+      764,
+      1046,
+      784
+     ]
+    }
+   ],
+   "linea": "e35",
+   "tabla": "T_ITEMS",
+   "fila": 4,
+   "col": 4,
+   "cabecera": false,
+   "celda_bbox": [
+    870,
+    742,
+    1060,
+    806
+   ]
+  },
+  {
+   "id": "e37",
+   "rol": "clave",
+   "texto": "SUBTOTAL",
+   "bbox": [
+    420,
+    862,
+    580,
+    884
+   ],
+   "palabras": [
+    {
+     "texto": "SUBTOTAL",
+     "bbox": [
+      420,
+      862,
+      580,
+      884
+     ]
+    }
+   ],
+   "linea": "e37",
+   "par": "P36"
+  },
+  {
+   "id": "e38",
+   "rol": "valor",
+   "texto": "32.00",
+   "bbox": [
+    954,
+    862,
+    1040,
+    884
+   ],
+   "palabras": [
+    {
+     "texto": "32.00",
+     "bbox": [
+      954,
+      862,
+      1040,
+      884
+     ]
+    }
+   ],
+   "linea": "e38",
+   "par": "P36"
+  },
+  {
+   "id": "e40",
+   "rol": "clave",
+   "texto": "SERVICIO 10%",
+   "bbox": [
+    420,
+    920,
+    640,
+    942
+   ],
+   "palabras": [
+    {
+     "texto": "SERVICIO",
+     "bbox": [
+      420,
+      920,
+      563,
+      942
+     ]
+    },
+    {
+     "texto": "10%",
+     "bbox": [
+      573,
+      920,
+      640,
+      942
+     ]
+    }
+   ],
+   "linea": "e40",
+   "par": "P39"
+  },
+  {
+   "id": "e41",
+   "rol": "valor",
+   "texto": "3.20",
+   "bbox": [
+    973,
+    920,
+    1040,
+    942
+   ],
+   "palabras": [
+    {
+     "texto": "3.20",
+     "bbox": [
+      973,
+      920,
+      1040,
+      942
+     ]
+    }
+   ],
+   "linea": "e41",
+   "par": "P39"
+  },
+  {
+   "id": "e43",
+   "rol": "clave",
+   "texto": "IVA 15%",
+   "bbox": [
+    420,
+    978,
+    548,
+    1000
+   ],
+   "palabras": [
+    {
+     "texto": "IVA",
+     "bbox": [
+      420,
+      978,
+      471,
+      1000
+     ]
+    },
+    {
+     "texto": "15%",
+     "bbox": [
+      481,
+      978,
+      548,
+      1000
+     ]
+    }
+   ],
+   "linea": "e43",
+   "par": "P42"
+  },
+  {
+   "id": "e44",
+   "rol": "valor",
+   "texto": "4.80",
+   "bbox": [
+    973,
+    978,
+    1040,
+    1000
+   ],
+   "palabras": [
+    {
+     "texto": "4.80",
+     "bbox": [
+      973,
+      978,
+      1040,
+      1000
+     ]
+    }
+   ],
+   "linea": "e44",
+   "par": "P42"
+  },
+  {
+   "id": "e46",
+   "rol": "clave",
+   "texto": "TOTAL",
+   "bbox": [
+    420,
+    1036,
+    528,
+    1058
+   ],
+   "palabras": [
+    {
+     "texto": "TOTAL",
+     "bbox": [
+      420,
+      1036,
+      528,
+      1058
+     ]
+    }
+   ],
+   "linea": "e46",
+   "par": "P45"
+  },
+  {
+   "id": "e47",
+   "rol": "valor",
+   "texto": "40.00",
+   "bbox": [
+    945,
+    1036,
+    1040,
+    1058
+   ],
+   "palabras": [
+    {
+     "texto": "40.00",
+     "bbox": [
+      945,
+      1036,
+      1040,
+      1058
+     ]
+    }
+   ],
+   "linea": "e47",
+   "par": "P45"
+  },
+  {
+   "id": "e48",
+   "rol": "linea",
+   "texto": "¡Gracias por su visita!",
+   "bbox": [
+    385,
+    1153,
+    715,
+    1182
+   ],
+   "palabras": [
+    {
+     "texto": "¡Gracias",
+     "bbox": [
+      385,
+      1153,
+      509,
+      1176
+     ]
+    },
+    {
+     "texto": "por",
+     "bbox": [
+      519,
+      1160,
+      569,
+      1182
+     ]
+    },
+    {
+     "texto": "su",
+     "bbox": [
+      578,
+      1160,
+      613,
+      1176
+     ]
+    },
+    {
+     "texto": "visita!",
+     "bbox": [
+      623,
+      1153,
+      715,
+      1176
+     ]
+    }
+   ],
+   "linea": "e48"
+  },
+  {
+   "id": "e49",
+   "rol": "linea",
+   "texto": "Propina voluntaria · Servicio incluido",
+   "bbox": [
+    329,
+    1213,
+    772,
+    1236
+   ],
+   "palabras": [
+    {
+     "texto": "Propina",
+     "bbox": [
+      329,
+      1213,
+      420,
+      1236
+     ]
+    },
+    {
+     "texto": "voluntaria",
+     "bbox": [
+      427,
+      1213,
+      549,
+      1231
+     ]
+    },
+    {
+     "texto": "·",
+     "bbox": [
+      557,
+      1221,
+      565,
+      1231
+     ]
+    },
+    {
+     "texto": "Servicio",
+     "bbox": [
+      573,
+      1213,
+      669,
+      1231
+     ]
+    },
+    {
+     "texto": "incluido",
+     "bbox": [
+      677,
+      1213,
+      771,
+      1231
+     ]
+    }
+   ],
+   "linea": "e49"
+  },
+  {
+   "id": "e50",
+   "rol": "linea",
+   "texto": "DOCUMENTO FICTICIO · SOLO PARA DEMOSTRACIÓN",
+   "bbox": [
+    264,
+    1610,
+    837,
+    1631
+   ],
+   "palabras": [
+    {
+     "texto": "DOCUMENTO",
+     "bbox": [
+      264,
+      1615,
+      408,
+      1631
+     ]
+    },
+    {
+     "texto": "FICTICIO",
+     "bbox": [
+      415,
+      1615,
+      506,
+      1631
+     ]
+    },
+    {
+     "texto": "·",
+     "bbox": [
+      513,
+      1622,
+      520,
+      1631
+     ]
+    },
+    {
+     "texto": "SOLO",
+     "bbox": [
+      527,
+      1615,
+      587,
+      1631
+     ]
+    },
+    {
+     "texto": "PARA",
+     "bbox": [
+      594,
+      1615,
+      652,
+      1631
+     ]
+    },
+    {
+     "texto": "DEMOSTRACIÓN",
+     "bbox": [
+      658,
+      1610,
+      836,
+      1631
+     ]
+    }
+   ],
+   "linea": "e50"
+  }
+ ]
+}

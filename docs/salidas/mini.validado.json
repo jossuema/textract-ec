@@ -1,0 +1,31 @@
+{
+  "documento": "docs/mini.png",
+  "tipo_documento": "desconocido",
+  "campos": {},
+  "tablas": [],
+  "alertas": [
+    "tipo de documento no reconocido: revisar manualmente"
+  ],
+  "estado": "REVISAR",
+  "paginas": 1,
+  "costo_usd": 0.0,
+  "modo": "cache/fixtures",
+  "extra": {
+    "evidencias": [
+      "sin patrones de factura ni de formulario"
+    ],
+    "avisos": [
+      "sin FORMS/TABLES: sin cache/ ni fixtures/ para mini/analyze_document__FORMS_LAYOUT_TABLES.json (grábalo con los Labs 1-3 en online o ejecuta 04_sistema.py --online)",
+      "sin QUERIES: sin cache/ ni fixtures/ para mini/analyze_document__QUERIES__2708ff9c.json (grábalo con los Labs 1-3 en online o ejecuta 04_sistema.py --online)"
+    ],
+    "confianza_media_palabras": 96.89,
+    "llamadas": [
+      {
+        "clave": "mini/detect_document_text",
+        "origen": "cache",
+        "costo_usd": 0.0,
+        "paginas": 1
+      }
+    ]
+  }
+}

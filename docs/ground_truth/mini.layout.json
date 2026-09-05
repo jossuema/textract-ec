@@ -1,0 +1,301 @@
+{
+ "documento": "mini",
+ "archivo": "docs/mini.png",
+ "ancho": 900,
+ "alto": 400,
+ "dpi": 200,
+ "rotacion_grados": 0.0,
+ "nota": "Geometría en píxeles [x0, y0, x1, y1]; bbox de cada palabra calculado con font.getlength/getbbox al dibujar.",
+ "elementos": [
+  {
+   "id": "e1",
+   "rol": "linea",
+   "texto": "Cuenca, 5 de septiembre de 2026",
+   "bbox": [
+    60,
+    46,
+    603,
+    77
+   ],
+   "palabras": [
+    {
+     "texto": "Cuenca,",
+     "bbox": [
+      60,
+      47,
+      190,
+      74
+     ]
+    },
+    {
+     "texto": "5",
+     "bbox": [
+      200,
+      47,
+      220,
+      70
+     ]
+    },
+    {
+     "texto": "de",
+     "bbox": [
+      230,
+      46,
+      270,
+      70
+     ]
+    },
+    {
+     "texto": "septiembre",
+     "bbox": [
+      280,
+      46,
+      463,
+      77
+     ]
+    },
+    {
+     "texto": "de",
+     "bbox": [
+      473,
+      46,
+      513,
+      70
+     ]
+    },
+    {
+     "texto": "2026",
+     "bbox": [
+      523,
+      47,
+      603,
+      70
+     ]
+    }
+   ],
+   "linea": "e1"
+  },
+  {
+   "id": "e2",
+   "rol": "linea",
+   "texto": "AWS Community Day Ecuador",
+   "bbox": [
+    60,
+    131,
+    597,
+    162
+   ],
+   "palabras": [
+    {
+     "texto": "AWS",
+     "bbox": [
+      60,
+      132,
+      143,
+      155
+     ]
+    },
+    {
+     "texto": "Community",
+     "bbox": [
+      154,
+      131,
+      358,
+      162
+     ]
+    },
+    {
+     "texto": "Day",
+     "bbox": [
+      369,
+      132,
+      439,
+      162
+     ]
+    },
+    {
+     "texto": "Ecuador",
+     "bbox": [
+      450,
+      131,
+      597,
+      155
+     ]
+    }
+   ],
+   "linea": "e2"
+  },
+  {
+   "id": "e3",
+   "rol": "linea",
+   "texto": "¿Funciona el español? Sí: ñ, á, é, í, ó, ú",
+   "bbox": [
+    60,
+    214,
+    683,
+    247
+   ],
+   "palabras": [
+    {
+     "texto": "¿Funciona",
+     "bbox": [
+      60,
+      216,
+      222,
+      240
+     ]
+    },
+    {
+     "texto": "el",
+     "bbox": [
+      232,
+      216,
+      261,
+      240
+     ]
+    },
+    {
+     "texto": "español?",
+     "bbox": [
+      271,
+      215,
+      414,
+      247
+     ]
+    },
+    {
+     "texto": "Sí:",
+     "bbox": [
+      424,
+      214,
+      464,
+      240
+     ]
+    },
+    {
+     "texto": "ñ,",
+     "bbox": [
+      474,
+      215,
+      504,
+      244
+     ]
+    },
+    {
+     "texto": "á,",
+     "bbox": [
+      514,
+      214,
+      544,
+      244
+     ]
+    },
+    {
+     "texto": "é,",
+     "bbox": [
+      554,
+      214,
+      584,
+      244
+     ]
+    },
+    {
+     "texto": "í,",
+     "bbox": [
+      594,
+      214,
+      613,
+      244
+     ]
+    },
+    {
+     "texto": "ó,",
+     "bbox": [
+      623,
+      214,
+      653,
+      244
+     ]
+    },
+    {
+     "texto": "ú",
+     "bbox": [
+      663,
+      214,
+      683,
+      240
+     ]
+    }
+   ],
+   "linea": "e3"
+  },
+  {
+   "id": "e4",
+   "rol": "linea",
+   "texto": "Textract lee esto en 1 llamada",
+   "bbox": [
+    59,
+    301,
+    554,
+    325
+   ],
+   "palabras": [
+    {
+     "texto": "Textract",
+     "bbox": [
+      59,
+      302,
+      196,
+      325
+     ]
+    },
+    {
+     "texto": "lee",
+     "bbox": [
+      206,
+      301,
+      255,
+      325
+     ]
+    },
+    {
+     "texto": "esto",
+     "bbox": [
+      265,
+      302,
+      335,
+      325
+     ]
+    },
+    {
+     "texto": "en",
+     "bbox": [
+      345,
+      307,
+      385,
+      325
+     ]
+    },
+    {
+     "texto": "1",
+     "bbox": [
+      395,
+      302,
+      415,
+      325
+     ]
+    },
+    {
+     "texto": "llamada",
+     "bbox": [
+      425,
+      301,
+      554,
+      325
+     ]
+    }
+   ],
+   "linea": "e4"
+  }
+ ]
+}

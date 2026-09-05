@@ -1,0 +1,52 @@
+{
+  "documento": "docs/orden_compra_prosa.png",
+  "tipo_documento": "desconocido",
+  "campos": {
+    "PROVEEDOR": {
+      "valor": "Gerente de Compras",
+      "confianza": 60.000003814697266,
+      "origen": "QUERIES"
+    },
+    "TOTAL_COMPRA": {
+      "valor": "",
+      "confianza": 0.0,
+      "origen": "QUERIES"
+    },
+    "CANT_MONITORES": {
+      "valor": "27",
+      "confianza": 99.0,
+      "origen": "QUERIES"
+    }
+  },
+  "tablas": [],
+  "alertas": [
+    "tipo de documento no reconocido: revisar manualmente"
+  ],
+  "estado": "REVISAR",
+  "paginas": 1,
+  "costo_usd": 0.0,
+  "modo": "cache/fixtures",
+  "extra": {
+    "evidencias": [
+      "sin patrones de factura ni de formulario"
+    ],
+    "avisos": [
+      "sin FORMS/TABLES: sin cache/ ni fixtures/ para orden_compra_prosa/analyze_document__FORMS_LAYOUT_TABLES.json (grábalo con los Labs 1-3 en online o ejecuta 04_sistema.py --online)"
+    ],
+    "confianza_media_palabras": 98.91,
+    "llamadas": [
+      {
+        "clave": "orden_compra_prosa/detect_document_text",
+        "origen": "cache",
+        "costo_usd": 0.0,
+        "paginas": 1
+      },
+      {
+        "clave": "orden_compra_prosa/analyze_document__QUERIES__2708ff9c",
+        "origen": "cache",
+        "costo_usd": 0.0,
+        "paginas": 1
+      }
+    ]
+  }
+}

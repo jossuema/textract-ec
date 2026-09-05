@@ -1,0 +1,59 @@
+{
+  "generado": "2026-09-04T19:09:26",
+  "documento": "docs/orden_compra_prosa.png",
+  "tipo_textract": "desconocido",
+  "modelo_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+  "estrategia": "json_schema",
+  "modo": "offline",
+  "fixture": "fixtures/bedrock/orden_compra_prosa__haiku.json",
+  "sintetico": true,
+  "usage": {
+    "inputTokens": 812,
+    "outputTokens": 260,
+    "totalTokens": 1072
+  },
+  "costo_usd_aprox": 0.002112,
+  "intentos_fallidos": [],
+  "json_llm": {
+    "tipo_documento": "orden_compra",
+    "emisor": {
+      "razon_social": "Tecnología Andina Ejemplo S.A.",
+      "ruc": ""
+    },
+    "comprador": {
+      "nombre": "Andina Datos Ejemplo",
+      "identificacion": ""
+    },
+    "numero_factura": "",
+    "fecha_emision": "2026-08-28",
+    "clave_acceso": "",
+    "items": [
+      {
+        "descripcion": "Monitor de 27 pulgadas",
+        "cantidad": 3,
+        "precio_unitario": 350.0,
+        "total": 1050.0
+      },
+      {
+        "descripcion": "Teclado mecánico",
+        "cantidad": 2,
+        "precio_unitario": 85.6,
+        "total": 171.2
+      }
+    ],
+    "subtotal": 1221.2,
+    "iva": 0.0,
+    "propina": 0.0,
+    "total": 1221.2,
+    "moneda": "USD",
+    "alertas": [
+      "El documento es una carta de confirmación de compra, no una factura: no tiene número, clave de acceso ni RUC.",
+      "No se indica IVA; el total 1221.20 es la suma de los ítems (3 × 350.00 + 2 × 85.60) sin impuestos."
+    ],
+    "explicacion": "Carta fechada en Cuenca el 28 de agosto de 2026 en la que Andina Datos Ejemplo confirma a Tecnología Andina Ejemplo S.A. la compra de tres monitores de 27 pulgadas a 350 dólares y dos teclados mecánicos a 85.60 dólares, con entrega en Calle Larga 4-56 antes del 10 de septiembre y pago por transferencia. Las cantidades y precios están en prosa, por eso las consultas de Textract fallaron: una no respondió y las otras dos respondieron mal."
+  },
+  "revalidacion": {
+    "alertas": [],
+    "estado": "OK"
+  }
+}

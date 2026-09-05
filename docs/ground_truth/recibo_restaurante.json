@@ -1,0 +1,42 @@
+{
+ "documento": "recibo_restaurante",
+ "archivo": "docs/extra/recibo_restaurante.png",
+ "tipo_documento": "factura",
+ "tipo_real": "nota de venta de restaurante",
+ "emisor": {
+  "razon_social": "EL CANGREJO SABROSO EJEMPLO",
+  "ruc": "0990123454001",
+  "direccion": "Av. Francisco de Orellana 123, Guayaquil",
+  "provincia": "Guayas"
+ },
+ "numero": "002-001-000004567",
+ "fecha": "02/09/2026 20:35",
+ "items": [
+  {
+   "cantidad": "2",
+   "descripcion": "Encebollado de pescado",
+   "precio_unitario": "4.50",
+   "total": "9.00"
+  },
+  {
+   "cantidad": "1",
+   "descripcion": "Cangrejada criolla",
+   "precio_unitario": "18.00",
+   "total": "18.00"
+  },
+  {
+   "cantidad": "2",
+   "descripcion": "Jugo de naranja",
+   "precio_unitario": "2.50",
+   "total": "5.00"
+  }
+ ],
+ "totales": {
+  "SUBTOTAL": "32.00",
+  "SERVICIO 10%": "3.20",
+  "IVA 15%": "4.80",
+  "TOTAL": "40.00"
+ },
+ "nota_calculo": "IVA 15% sobre el consumo (32.00); el servicio 10% no lleva IVA; TOTAL = consumo + servicio + IVA",
+ "moneda": "USD"
+}

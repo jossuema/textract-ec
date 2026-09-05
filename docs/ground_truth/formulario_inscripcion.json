@@ -1,0 +1,34 @@
+{
+ "documento": "formulario_inscripcion",
+ "archivo": "docs/formulario_inscripcion.png",
+ "tipo_documento": "formulario",
+ "campos": {
+  "Nombre": "Ana Lucía",
+  "Apellido": "Sarmiento Vera",
+  "Cédula": "0103456786",
+  "Correo": "ana.sarmiento@ejemplo.ec",
+  "Ciudad": "Cuenca",
+  "Empresa": "Andina Datos Ejemplo",
+  "Teléfono": "099 123 4567"
+ },
+ "checkboxes": {
+  "Track (marcar con X):": {
+   "Workshop OCR con Textract": true,
+   "Serverless": false,
+   "Datos y analítica": false
+  },
+  "¿Tienes cuenta AWS?:": {
+   "Sí": true,
+   "No": false
+  },
+  "Nivel:": {
+   "Principiante": false,
+   "Intermedio": true,
+   "Avanzado": false
+  }
+ },
+ "checkboxes_total": 8,
+ "checkboxes_marcados": 3,
+ "estado_esperado": "OK",
+ "alertas_esperadas": []
+}

@@ -1,0 +1,2 @@
+# Única dependencia obligatoria del taller (CloudShell ya la trae).
+boto3>=1.43,<2

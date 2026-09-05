@@ -1,0 +1,1129 @@
+{
+ "documento": "orden_compra_prosa",
+ "archivo": "docs/orden_compra_prosa.png",
+ "ancho": 2480,
+ "alto": 3508,
+ "dpi": 300,
+ "rotacion_grados": 0.0,
+ "nota": "Geometría en píxeles [x0, y0, x1, y1]; bbox de cada palabra calculado con font.getlength/getbbox al dibujar.",
+ "elementos": [
+  {
+   "id": "e1",
+   "rol": "titulo",
+   "texto": "Andina Datos Ejemplo",
+   "bbox": [
+    220,
+    206,
+    639,
+    239
+   ],
+   "palabras": [
+    {
+     "texto": "Andina",
+     "bbox": [
+      220,
+      206,
+      353,
+      232
+     ]
+    },
+    {
+     "texto": "Datos",
+     "bbox": [
+      365,
+      207,
+      475,
+      232
+     ]
+    },
+    {
+     "texto": "Ejemplo",
+     "bbox": [
+      487,
+      206,
+      639,
+      239
+     ]
+    }
+   ],
+   "linea": "e1"
+  },
+  {
+   "id": "e2",
+   "rol": "linea",
+   "texto": "Calle Larga 4-56, Cuenca · compras@ejemplo.ec",
+   "bbox": [
+    220,
+    260,
+    851,
+    285
+   ],
+   "palabras": [
+    {
+     "texto": "Calle",
+     "bbox": [
+      220,
+      260,
+      284,
+      280
+     ]
+    },
+    {
+     "texto": "Larga",
+     "bbox": [
+      292,
+      261,
+      366,
+      285
+     ]
+    },
+    {
+     "texto": "4-56,",
+     "bbox": [
+      374,
+      261,
+      442,
+      283
+     ]
+    },
+    {
+     "texto": "Cuenca",
+     "bbox": [
+      450,
+      261,
+      546,
+      280
+     ]
+    },
+    {
+     "texto": "·",
+     "bbox": [
+      554,
+      269,
+      562,
+      280
+     ]
+    },
+    {
+     "texto": "compras@ejemplo.ec",
+     "bbox": [
+      570,
+      260,
+      851,
+      285
+     ]
+    }
+   ],
+   "linea": "e2"
+  },
+  {
+   "id": "e3",
+   "rol": "linea",
+   "texto": "Cuenca, 28 de agosto de 2026.",
+   "bbox": [
+    220,
+    427,
+    812,
+    464
+   ],
+   "palabras": [
+    {
+     "texto": "Cuenca,",
+     "bbox": [
+      220,
+      427,
+      374,
+      460
+     ]
+    },
+    {
+     "texto": "28",
+     "bbox": [
+      386,
+      427,
+      434,
+      456
+     ]
+    },
+    {
+     "texto": "de",
+     "bbox": [
+      446,
+      427,
+      493,
+      456
+     ]
+    },
+    {
+     "texto": "agosto",
+     "bbox": [
+      505,
+      429,
+      633,
+      464
+     ]
+    },
+    {
+     "texto": "de",
+     "bbox": [
+      645,
+      427,
+      692,
+      456
+     ]
+    },
+    {
+     "texto": "2026.",
+     "bbox": [
+      704,
+      427,
+      812,
+      456
+     ]
+    }
+   ],
+   "linea": "e3"
+  },
+  {
+   "id": "e4",
+   "rol": "linea",
+   "texto": "Estimados señores de Tecnología Andina Ejemplo S.A.:",
+   "bbox": [
+    220,
+    555,
+    1263,
+    593
+   ],
+   "palabras": [
+    {
+     "texto": "Estimados",
+     "bbox": [
+      220,
+      556,
+      417,
+      585
+     ]
+    },
+    {
+     "texto": "señores",
+     "bbox": [
+      429,
+      555,
+      578,
+      585
+     ]
+    },
+    {
+     "texto": "de",
+     "bbox": [
+      590,
+      556,
+      637,
+      585
+     ]
+    },
+    {
+     "texto": "Tecnología",
+     "bbox": [
+      648,
+      555,
+      855,
+      593
+     ]
+    },
+    {
+     "texto": "Andina",
+     "bbox": [
+      867,
+      556,
+      999,
+      585
+     ]
+    },
+    {
+     "texto": "Ejemplo",
+     "bbox": [
+      1011,
+      556,
+      1164,
+      593
+     ]
+    },
+    {
+     "texto": "S.A.:",
+     "bbox": [
+      1176,
+      556,
+      1263,
+      585
+     ]
+    }
+   ],
+   "linea": "e4"
+  },
+  {
+   "id": "e5",
+   "rol": "linea",
+   "texto": "Por medio de la presente confirmamos la compra de tres monitores de 27 pulgadas a un precio de 350",
+   "bbox": [
+    220,
+    685,
+    2180,
+    722
+   ],
+   "palabras": [
+    {
+     "texto": "Por",
+     "bbox": [
+      220,
+      686,
+      282,
+      714
+     ]
+    },
+    {
+     "texto": "medio",
+     "bbox": [
+      294,
+      685,
+      412,
+      714
+     ]
+    },
+    {
+     "texto": "de",
+     "bbox": [
+      424,
+      685,
+      471,
+      714
+     ]
+    },
+    {
+     "texto": "la",
+     "bbox": [
+      483,
+      685,
+      517,
+      714
+     ]
+    },
+    {
+     "texto": "presente",
+     "bbox": [
+      529,
+      687,
+      697,
+      722
+     ]
+    },
+    {
+     "texto": "confirmamos",
+     "bbox": [
+      709,
+      685,
+      957,
+      714
+     ]
+    },
+    {
+     "texto": "la",
+     "bbox": [
+      969,
+      685,
+      1003,
+      714
+     ]
+    },
+    {
+     "texto": "compra",
+     "bbox": [
+      1015,
+      692,
+      1159,
+      722
+     ]
+    },
+    {
+     "texto": "de",
+     "bbox": [
+      1171,
+      685,
+      1218,
+      714
+     ]
+    },
+    {
+     "texto": "tres",
+     "bbox": [
+      1230,
+      687,
+      1304,
+      714
+     ]
+    },
+    {
+     "texto": "monitores",
+     "bbox": [
+      1316,
+      685,
+      1508,
+      714
+     ]
+    },
+    {
+     "texto": "de",
+     "bbox": [
+      1520,
+      685,
+      1567,
+      714
+     ]
+    },
+    {
+     "texto": "27",
+     "bbox": [
+      1579,
+      685,
+      1627,
+      714
+     ]
+    },
+    {
+     "texto": "pulgadas",
+     "bbox": [
+      1639,
+      685,
+      1812,
+      722
+     ]
+    },
+    {
+     "texto": "a",
+     "bbox": [
+      1824,
+      692,
+      1847,
+      714
+     ]
+    },
+    {
+     "texto": "un",
+     "bbox": [
+      1859,
+      692,
+      1907,
+      714
+     ]
+    },
+    {
+     "texto": "precio",
+     "bbox": [
+      1919,
+      685,
+      2037,
+      722
+     ]
+    },
+    {
+     "texto": "de",
+     "bbox": [
+      2049,
+      685,
+      2096,
+      714
+     ]
+    },
+    {
+     "texto": "350",
+     "bbox": [
+      2108,
+      685,
+      2180,
+      714
+     ]
+    }
+   ],
+   "linea": "e5"
+  },
+  {
+   "id": "e6",
+   "rol": "linea",
+   "texto": "dólares cada uno, más dos teclados mecánicos a 85.60 dólares por unidad. Solicitamos la entrega en",
+   "bbox": [
+    220,
+    748,
+    2148,
+    786
+   ],
+   "palabras": [
+    {
+     "texto": "dólares",
+     "bbox": [
+      220,
+      748,
+      360,
+      778
+     ]
+    },
+    {
+     "texto": "cada",
+     "bbox": [
+      372,
+      749,
+      463,
+      778
+     ]
+    },
+    {
+     "texto": "uno,",
+     "bbox": [
+      475,
+      756,
+      558,
+      782
+     ]
+    },
+    {
+     "texto": "más",
+     "bbox": [
+      570,
+      748,
+      650,
+      778
+     ]
+    },
+    {
+     "texto": "dos",
+     "bbox": [
+      662,
+      749,
+      729,
+      778
+     ]
+    },
+    {
+     "texto": "teclados",
+     "bbox": [
+      741,
+      749,
+      901,
+      778
+     ]
+    },
+    {
+     "texto": "mecánicos",
+     "bbox": [
+      913,
+      748,
+      1116,
+      778
+     ]
+    },
+    {
+     "texto": "a",
+     "bbox": [
+      1128,
+      756,
+      1151,
+      778
+     ]
+    },
+    {
+     "texto": "85.60",
+     "bbox": [
+      1163,
+      749,
+      1271,
+      778
+     ]
+    },
+    {
+     "texto": "dólares",
+     "bbox": [
+      1283,
+      748,
+      1423,
+      778
+     ]
+    },
+    {
+     "texto": "por",
+     "bbox": [
+      1435,
+      756,
+      1498,
+      786
+     ]
+    },
+    {
+     "texto": "unidad.",
+     "bbox": [
+      1510,
+      749,
+      1652,
+      778
+     ]
+    },
+    {
+     "texto": "Solicitamos",
+     "bbox": [
+      1664,
+      749,
+      1883,
+      778
+     ]
+    },
+    {
+     "texto": "la",
+     "bbox": [
+      1895,
+      749,
+      1929,
+      778
+     ]
+    },
+    {
+     "texto": "entrega",
+     "bbox": [
+      1941,
+      751,
+      2089,
+      786
+     ]
+    },
+    {
+     "texto": "en",
+     "bbox": [
+      2101,
+      756,
+      2148,
+      778
+     ]
+    }
+   ],
+   "linea": "e6"
+  },
+  {
+   "id": "e7",
+   "rol": "linea",
+   "texto": "nuestras oficinas de la Calle Larga 4-56 antes del 10 de septiembre. El pago se realizará por transferencia",
+   "bbox": [
+    220,
+    812,
+    2243,
+    850
+   ],
+   "palabras": [
+    {
+     "texto": "nuestras",
+     "bbox": [
+      220,
+      815,
+      385,
+      842
+     ]
+    },
+    {
+     "texto": "oficinas",
+     "bbox": [
+      397,
+      813,
+      543,
+      842
+     ]
+    },
+    {
+     "texto": "de",
+     "bbox": [
+      555,
+      813,
+      602,
+      842
+     ]
+    },
+    {
+     "texto": "la",
+     "bbox": [
+      614,
+      813,
+      648,
+      842
+     ]
+    },
+    {
+     "texto": "Calle",
+     "bbox": [
+      660,
+      813,
+      755,
+      842
+     ]
+    },
+    {
+     "texto": "Larga",
+     "bbox": [
+      767,
+      814,
+      874,
+      850
+     ]
+    },
+    {
+     "texto": "4-56",
+     "bbox": [
+      886,
+      813,
+      972,
+      842
+     ]
+    },
+    {
+     "texto": "antes",
+     "bbox": [
+      984,
+      815,
+      1089,
+      842
+     ]
+    },
+    {
+     "texto": "del",
+     "bbox": [
+      1101,
+      813,
+      1159,
+      842
+     ]
+    },
+    {
+     "texto": "10",
+     "bbox": [
+      1171,
+      813,
+      1219,
+      842
+     ]
+    },
+    {
+     "texto": "de",
+     "bbox": [
+      1231,
+      813,
+      1278,
+      842
+     ]
+    },
+    {
+     "texto": "septiembre.",
+     "bbox": [
+      1290,
+      813,
+      1518,
+      850
+     ]
+    },
+    {
+     "texto": "El",
+     "bbox": [
+      1530,
+      813,
+      1565,
+      842
+     ]
+    },
+    {
+     "texto": "pago",
+     "bbox": [
+      1577,
+      820,
+      1671,
+      850
+     ]
+    },
+    {
+     "texto": "se",
+     "bbox": [
+      1683,
+      820,
+      1726,
+      842
+     ]
+    },
+    {
+     "texto": "realizará",
+     "bbox": [
+      1738,
+      812,
+      1904,
+      842
+     ]
+    },
+    {
+     "texto": "por",
+     "bbox": [
+      1916,
+      820,
+      1979,
+      850
+     ]
+    },
+    {
+     "texto": "transferencia",
+     "bbox": [
+      1991,
+      813,
+      2243,
+      842
+     ]
+    }
+   ],
+   "linea": "e7"
+  },
+  {
+   "id": "e8",
+   "rol": "linea",
+   "texto": "bancaria a la recepción de la factura.",
+   "bbox": [
+    220,
+    876,
+    928,
+    914
+   ],
+   "palabras": [
+    {
+     "texto": "bancaria",
+     "bbox": [
+      220,
+      877,
+      385,
+      906
+     ]
+    },
+    {
+     "texto": "a",
+     "bbox": [
+      397,
+      884,
+      420,
+      906
+     ]
+    },
+    {
+     "texto": "la",
+     "bbox": [
+      432,
+      877,
+      466,
+      906
+     ]
+    },
+    {
+     "texto": "recepción",
+     "bbox": [
+      478,
+      876,
+      664,
+      914
+     ]
+    },
+    {
+     "texto": "de",
+     "bbox": [
+      676,
+      877,
+      723,
+      906
+     ]
+    },
+    {
+     "texto": "la",
+     "bbox": [
+      735,
+      877,
+      769,
+      906
+     ]
+    },
+    {
+     "texto": "factura.",
+     "bbox": [
+      781,
+      877,
+      928,
+      906
+     ]
+    }
+   ],
+   "linea": "e8"
+  },
+  {
+   "id": "e9",
+   "rol": "linea",
+   "texto": "Atentamente,",
+   "bbox": [
+    220,
+    1007,
+    480,
+    1039
+   ],
+   "palabras": [
+    {
+     "texto": "Atentamente,",
+     "bbox": [
+      220,
+      1007,
+      480,
+      1039
+     ]
+    }
+   ],
+   "linea": "e9"
+  },
+  {
+   "id": "e10",
+   "rol": "linea",
+   "texto": "María José Cabrera",
+   "bbox": [
+    220,
+    1179,
+    579,
+    1217
+   ],
+   "palabras": [
+    {
+     "texto": "María",
+     "bbox": [
+      220,
+      1179,
+      326,
+      1209
+     ]
+    },
+    {
+     "texto": "José",
+     "bbox": [
+      336,
+      1179,
+      415,
+      1217
+     ]
+    },
+    {
+     "texto": "Cabrera",
+     "bbox": [
+      427,
+      1180,
+      579,
+      1209
+     ]
+    }
+   ],
+   "linea": "e10"
+  },
+  {
+   "id": "e11",
+   "rol": "linea",
+   "texto": "Gerente de Compras",
+   "bbox": [
+    220,
+    1264,
+    614,
+    1301
+   ],
+   "palabras": [
+    {
+     "texto": "Gerente",
+     "bbox": [
+      220,
+      1264,
+      373,
+      1293
+     ]
+    },
+    {
+     "texto": "de",
+     "bbox": [
+      385,
+      1264,
+      432,
+      1293
+     ]
+    },
+    {
+     "texto": "Compras",
+     "bbox": [
+      444,
+      1264,
+      614,
+      1301
+     ]
+    }
+   ],
+   "linea": "e11"
+  },
+  {
+   "id": "e12",
+   "rol": "linea",
+   "texto": "Andina Datos Ejemplo",
+   "bbox": [
+    220,
+    1348,
+    639,
+    1385
+   ],
+   "palabras": [
+    {
+     "texto": "Andina",
+     "bbox": [
+      220,
+      1348,
+      352,
+      1377
+     ]
+    },
+    {
+     "texto": "Datos",
+     "bbox": [
+      364,
+      1349,
+      474,
+      1377
+     ]
+    },
+    {
+     "texto": "Ejemplo",
+     "bbox": [
+      486,
+      1348,
+      639,
+      1385
+     ]
+    }
+   ],
+   "linea": "e12"
+  },
+  {
+   "id": "e13",
+   "rol": "linea",
+   "texto": "DOCUMENTO FICTICIO · SOLO PARA DEMOSTRACIÓN · AWS Community Day Ecuador 2026",
+   "bbox": [
+    654,
+    3369,
+    1826,
+    3398
+   ],
+   "palabras": [
+    {
+     "texto": "DOCUMENTO",
+     "bbox": [
+      654,
+      3374,
+      824,
+      3393
+     ]
+    },
+    {
+     "texto": "FICTICIO",
+     "bbox": [
+      832,
+      3374,
+      943,
+      3393
+     ]
+    },
+    {
+     "texto": "·",
+     "bbox": [
+      951,
+      3382,
+      959,
+      3393
+     ]
+    },
+    {
+     "texto": "SOLO",
+     "bbox": [
+      967,
+      3374,
+      1038,
+      3393
+     ]
+    },
+    {
+     "texto": "PARA",
+     "bbox": [
+      1046,
+      3374,
+      1116,
+      3393
+     ]
+    },
+    {
+     "texto": "DEMOSTRACIÓN",
+     "bbox": [
+      1124,
+      3369,
+      1336,
+      3393
+     ]
+    },
+    {
+     "texto": "·",
+     "bbox": [
+      1344,
+      3382,
+      1352,
+      3393
+     ]
+    },
+    {
+     "texto": "AWS",
+     "bbox": [
+      1360,
+      3374,
+      1421,
+      3393
+     ]
+    },
+    {
+     "texto": "Community",
+     "bbox": [
+      1429,
+      3373,
+      1577,
+      3398
+     ]
+    },
+    {
+     "texto": "Day",
+     "bbox": [
+      1585,
+      3374,
+      1636,
+      3398
+     ]
+    },
+    {
+     "texto": "Ecuador",
+     "bbox": [
+      1644,
+      3373,
+      1750,
+      3393
+     ]
+    },
+    {
+     "texto": "2026",
+     "bbox": [
+      1758,
+      3374,
+      1826,
+      3393
+     ]
+    }
+   ],
+   "linea": "e13"
+  }
+ ]
+}
