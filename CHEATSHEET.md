@@ -1,6 +1,6 @@
 # CHEATSHEET · textract-ec (1 página)
 
-**Repo** `https://github.com/jossuema/textract-ec` · **URL corta** `<URL-CORTA>` · **Región** `us-east-1` · **Modo** `--offline` / `--online` (sin flag: automático) · offline = respuestas **reales** de Textract grabadas el 4-sep-2026 (`[OFFLINE · fixtures reales grabados 2026-09-04]`)
+**Repo** `https://github.com/jossuema/textract-ec` · **URL corta** `github.com/jossuema/textract-ec` · **Región** `us-east-1` · **Modo** `--offline` / `--online` (sin flag: automático) · offline = respuestas **reales** de Textract grabadas el 4-sep-2026 (`[OFFLINE · fixtures reales grabados 2026-09-04]`)
 
 ## Comandos
 

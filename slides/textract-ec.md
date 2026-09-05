@@ -3,7 +3,7 @@
 Construye un sistema inteligente de OCR con Amazon Textract y Python.
 AWS Community Day Ecuador 2026 · Sábado 5-sep-2026 · 15:00–16:10 · Auditorio Luis Alberto Luna, UPS Cuenca · Ponente: Manuel Josue.
 
-Este Markdown es la fuente editable de `slides/index.html` (18 slides). Cada `## Slide N` lleva un bloque `> Notas:` para el ponente. Los precios son tarifa Oregón, aprox.; los hechos no verificados llevan "(confirmar)". Los marcadores `<URL-CORTA>`, `https://github.com/jossuema/textract-ec.git`, `jossuema` y `<CONTACTO-PONENTE>` se reemplazan antes de proyectar.
+Este Markdown es la fuente editable de `slides/index.html` (18 slides). Cada `## Slide N` lleva un bloque `> Notas:` para el ponente. Los precios son tarifa Oregón, aprox.; los hechos no verificados llevan "(confirmar)". Los marcadores `github.com/jossuema/textract-ec`, `https://github.com/jossuema/textract-ec.git`, `jossuema` y `github.com/jossuema` se reemplazan antes de proyectar.
 
 ---
 
@@ -11,14 +11,14 @@ Este Markdown es la fuente editable de `slides/index.html` (18 slides). Cada `##
 
 *min 0*
 
-- QR gigante → `github.com/jossuema/textract-ec` · URL corta `<URL-CORTA>` · "Abre esto ahora".
+- QR gigante → `github.com/jossuema/textract-ec` · URL corta `github.com/jossuema/textract-ec` · "Abre esto ahora".
 - **Sin laptop** → siéntate con alguien que sí tenga.
 - **Sin cuenta AWS** → funciona igual (modo `offline`).
 - **Con cuenta** → abre CloudShell en `us-east-1` YA (tarda ~1 min).
 - Manuel Josue · AWS Community Day Ecuador 2026 · UPS Cuenca.
 - Motivo visual: fragmento de factura (FACTURA No. 001-001-000001234, R.U.C. 1790456129001, VALOR TOTAL 944.84) con cajas de confianza verde/ámbar/roja.
 
-> Notas: 3 min (min 0–3). Proyectada desde antes de las 15:00. Decir textualmente las tres reglas; no explicar nada más: el objetivo es que escaneen el QR y que CloudShell empiece a arrancar. Pedir dos conteos de manos (¿laptop? ¿cuenta AWS?) y anotar el número: decide el plan de recorte. Presentar a los helpers por nombre. Pendiente: reemplazar QR y `<URL-CORTA>`.
+> Notas: 3 min (min 0–3). Proyectada desde antes de las 15:00. Decir textualmente las tres reglas; no explicar nada más: el objetivo es que escaneen el QR y que CloudShell empiece a arrancar. Pedir dos conteos de manos (¿laptop? ¿cuenta AWS?) y anotar el número: decide el plan de recorte. Presentar a los helpers por nombre. Pendiente: reemplazar QR y `github.com/jossuema/textract-ec`.
 
 ## Slide 2 — Qué vas a construir hoy (y las 3 reglas)
 
@@ -389,8 +389,8 @@ cat cache/.costos.json   # {"llamadas": 8, "usd": 0.23}
 
 *min 67*
 
-- QR gigante otra vez → `github.com/jossuema/textract-ec` · `<URL-CORTA>`.
-- Manuel Josue · AWS User Group Ecuador · `<CONTACTO-PONENTE>`.
+- QR gigante otra vez → `github.com/jossuema/textract-ec` · `github.com/jossuema/textract-ec`.
+- Manuel Josue · AWS User Group Ecuador · `github.com/jossuema`.
 - "Las preguntas largas, en el pasillo." El auditorio se necesita a las 16:10.
 
-> Notas: 3 min (min 67–70): 2-3 preguntas cortas. Invitar a continuar en el pasillo y en el canal del AWS User Group Ecuador. Recoger la factura impresa y los cheat sheets sobrantes. Cerrar CloudShell. Pendiente: reemplazar QR, `<URL-CORTA>` y `<CONTACTO-PONENTE>`.
+> Notas: 3 min (min 67–70): 2-3 preguntas cortas. Invitar a continuar en el pasillo y en el canal del AWS User Group Ecuador. Recoger la factura impresa y los cheat sheets sobrantes. Cerrar CloudShell. Pendiente: reemplazar QR, `github.com/jossuema/textract-ec` y `github.com/jossuema`.

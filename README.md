@@ -4,7 +4,7 @@
 
 En 70 minutos vas a construir, en Python y con `boto3` como única dependencia, un sistema que toma la imagen de una factura ecuatoriana (o de un formulario), la envía a Amazon Textract, recorre la respuesta como un grafo de bloques (`PAGE → LINE → WORD`, pares clave-valor, tablas, checkboxes, queries), convierte cada dato en un `Campo{valor, confianza, origen}`, lo valida con reglas de negocio ecuatorianas deterministas (módulo 11 del RUC, dígito verificador de la clave de acceso de 49 dígitos, IVA 15 %, suma de ítems = subtotal) y produce un JSON con estado `OK` o `REVISAR` y alertas explicables. Al final lo corres en lote sobre una carpeta entera y ves cómo se convierte en un pipeline. Funciona **con tu cuenta AWS** (modo online) o **sin ninguna cuenta** (modo offline, con respuestas grabadas): el código de parseo es el mismo en ambos casos.
 
-> URL corta del taller: `<URL-CORTA>` · Repo: `https://github.com/jossuema/textract-ec`
+> URL corta del taller: `github.com/jossuema/textract-ec` · Repo: `https://github.com/jossuema/textract-ec`
 
 ---
 
